@@ -1,0 +1,38 @@
+<ion-content [scrollEvents]="true" #chat>
+
+  <ng-container *ngIf="loading$|async;else messagesTemplate">
+    <ion-item *ngFor="let item of [1,2,3,4,5,6]">
+      <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+
+    </ion-item>
+  </ng-container>
+
+  <ng-template #messagesTemplate>
+    <ion-list *ngFor="let message of messages">
+      <ion-item lines="full">
+        <ion-avatar slot="start">
+          <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
+          <h5></h5>
+        </ion-avatar>
+
+        <ion-label class="ion-text-wrap">
+          <h5><b>Usuário</b></h5>
+          <p>{{message?.text}}</p>
+          <p>{{message?.createdAt|date}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+</ion-content>
