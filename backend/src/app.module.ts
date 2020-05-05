@@ -7,18 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [
-    AuthModule,
-    RoomModule,
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database.db',
-      autoLoadEntities: true,
-      entities: ['dist/**/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
-    UserModule,
-  ],
+  imports: [AuthModule, RoomModule, TypeOrmModule.forRoot({}), UserModule],
   controllers: [AppController],
   providers: [AppService],
 })

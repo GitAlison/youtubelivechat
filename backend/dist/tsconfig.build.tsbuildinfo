@@ -2234,7 +2234,7 @@
         "signature": "a9a6d1ac7d8e1b27ed750995232ec31127a73624abfe24dcf9111d466d1dff17"
       },
       "../src/user/user.entity.ts": {
-        "version": "ad9a71364d32557607f28f2f2d4d378c051b30d6788148011116f11fed7db184",
+        "version": "bff676334c4c2548effeaa3739318d020ff0ee2fb266b6b2d891c22159f08391",
         "signature": "e65e5de92f79c956245b3bbb46596ac29a31ac0434e3241ffa129106d4efb87e"
       },
       "../src/user/user.service.ts": {
@@ -2406,12 +2406,16 @@
         "signature": "7ebdc6e482327be44f898d355da4b2002c50c4a5b7f4e9bed061d83b5c257fce"
       },
       "../src/app.module.ts": {
-        "version": "9dea0a68b83b6e407c104645db6699d4240984c9124a0e74f3ac25cfa74a6851",
+        "version": "943025cff226aabf396fe8cb5a5e7b5400f9462b7a6f46b3ba4b37e451fa2c4f",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
+      "../src/entity/user.ts": {
+        "version": "3126c1387569a88a1daf88459672e2528137dfeed96736176c2fd6dd42e2a7f9",
+        "signature": "9631025fba6d494643ecbab085fbc91680081552d963905740e500ee65afce48"
+      },
       "../src/index.ts": {
-        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        "version": "67ea39a7ee331c5e8923d17c55ddfe7eeab1f8a8db43e7042401fdd0c2b39f66",
+        "signature": "99d24f064aeae9497bd0f6ecdff22b392fa7425bf93b674a9b91c338d494ea8a"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
         "version": "71cc7da1ef9d96f44a214a43017535538b47988d4bc9dedbf7592d2f9fe10da9",
@@ -2556,6 +2560,18 @@
       "../src/main.ts": {
         "version": "5f905160e5833ae2560ed2b3197a83c3e261b9ba81eab55928b4d8eb43ad5641",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      "../src/migration/1588708622594-first.ts": {
+        "version": "974866c738c64377b53b2056df3b20efcbdb6517c2cf925b2619729590edccd0",
+        "signature": "66efe65e5df75d35462d1af9f1b47ecf47dd36e43600d6cdb4b8bc6d4c1f5757"
+      },
+      "../src/migration/1588708664924-second.ts": {
+        "version": "d18340b9ea05aa04956e564ec03fce512aa76d09c8c18587c7d225645e793d05",
+        "signature": "32aeb0f55697879a73f2f1bc5cf15fc4af05f9dd1fcdd513be64e63c0193b7d5"
+      },
+      "../src/migration/1588708752005-second2.ts": {
+        "version": "16924f3f754a1db0dc4e47fdc6501e0bce59de984078ef5ed4da8d38780fac24",
+        "signature": "9aee6ca9f2a29a1313d06f2eb2e1511e392f39b204d09376f4842cc7c0356dbe"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
@@ -8375,7 +8391,18 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/entity/user.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/index.ts": [
+        "../node_modules/reflect-metadata/index.d.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../src/entity/user.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -8729,6 +8756,30 @@
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
         "../src/app.module.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/migration/1588708622594-first.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/migration/1588708664924-second.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/migration/1588708752005-second2.ts": [
+        "../node_modules/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -14542,6 +14593,9 @@
       "../src/room/room.controller.ts": [
         "../src/room/room.service.ts"
       ],
+      "../src/index.ts": [
+        "../node_modules/reflect-metadata/index.d.ts"
+      ],
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/common/interfaces/index.d.ts",
@@ -14886,6 +14940,12 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/migration/1588708622594-first.ts": [
+        "../node_modules/typeorm/index.d.ts"
+      ],
+      "../src/migration/1588708664924-second.ts": [
+        "../node_modules/typeorm/index.d.ts"
+      ],
       "../node_modules/@types/anymatch/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -15207,6 +15267,9 @@
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/migration/1588708752005-second2.ts": [
+        "../node_modules/typeorm/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -15812,6 +15875,8 @@
       "../src/room/room.controller.ts",
       "../src/room/room.module.ts",
       "../src/app.module.ts",
+      "../src/entity/user.ts",
+      "../src/index.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -15848,6 +15913,8 @@
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/main.ts",
+      "../src/migration/1588708622594-first.ts",
+      "../src/migration/1588708664924-second.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -15888,7 +15955,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/index.ts"
+      "../src/migration/1588708752005-second2.ts"
     ]
   },
   "version": "3.8.3"

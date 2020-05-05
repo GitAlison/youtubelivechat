@@ -17,18 +17,7 @@ let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [
-            auth_module_1.AuthModule,
-            room_module_1.RoomModule,
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'sqlite',
-                database: 'database.db',
-                autoLoadEntities: true,
-                entities: ['dist/**/*.entity{.ts,.js}'],
-                synchronize: true,
-            }),
-            user_module_1.UserModule,
-        ],
+        imports: [auth_module_1.AuthModule, room_module_1.RoomModule, typeorm_1.TypeOrmModule.forRoot({}), user_module_1.UserModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

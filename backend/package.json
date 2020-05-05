@@ -37,7 +37,7 @@
       "reflect-metadata": "^0.1.10",
       "rimraf": "^3.0.2",
       "rxjs": "^6.5.4",
-      "sqlite3": "^4.2.0",
+      "sqlite3": "^4.0.3",
       "typeorm": "0.2.24",
       "mysql": "^2.14.1"
    },
