@@ -2242,7 +2242,7 @@
         "signature": "872677ea065f79f22b7457a08238ea4195a519d93acf299a0628c178846005d0"
       },
       "../src/auth/auth.service.ts": {
-        "version": "e5db450a8b1c5e0d56e8d47ffdd7cd2be1b55044165d189d3b8f6a70fd356520",
+        "version": "0a444533e1dcb090b5f3ca81441d85934045ba554bef4d61179750409ecc41ea",
         "signature": "56072a8bc47e2cd04410ae65b9a2be61c28ebad7a09fa5af0d2e904f9f5ba8aa"
       },
       "../src/auth/jwt-auth.guard.ts": {
@@ -2250,8 +2250,8 @@
         "signature": "e9629b89f6cd33a040577695d89edf882e66287d30c87121f5fc07f404decd25"
       },
       "../src/app.controller.ts": {
-        "version": "0b7ef04457fe3a36b42b1733fe1cd82bc25016c4b2b738ab9d67304cdd03d7ff",
-        "signature": "c2f9242485fe9c2f57bd5a5d1e951bc45b8f419b5c54d2d0a8c6436d449a407c"
+        "version": "570dfaabc439f0e9226aad23e83b926b41d39d427e29d02df9d7ad2f5cd9a12f",
+        "signature": "281545d0a94d773c3348d9f7e833ccbb1b7aa4e193573f1bdd59ccdd6a883ba8"
       },
       "../node_modules/@types/passport-strategy/index.d.ts": {
         "version": "29d59e921bc723594bbfc98230d24f38f0d5a669f28fcf989b7468f4f95b7c52",
@@ -2277,8 +2277,12 @@
         "version": "405ab07bff0596028dcb1647fcda091206691543425e50fe87a12981930c3b0d",
         "signature": "482b8f0d35a3d453500a15b6c6057c1e4c40baa4329b39da9e1026d8e1de4329"
       },
+      "../src/auth/auth.controller.ts": {
+        "version": "c518d86f1301e54f0608d098e718989a4226ee6d1a5a976ce53f24890b43e5e8",
+        "signature": "ffd94b5975946de58f129de22fae985531bb4e44d15737a961a44352a4066983"
+      },
       "../src/auth/auth.module.ts": {
-        "version": "873dc284b25607be393442ab50192c2e33198d4685451d6702fcf1d051345576",
+        "version": "e6941178a9a19d7d40c394ecdc3ac63003c15f5889641283ab97c89ff5858496",
         "signature": "a28b5c0c372fb375910b3fe3c3ce4331509bc18ccef7cc39c9ee9d8daf8225d1"
       },
       "../node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts": {
@@ -8089,6 +8093,17 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/auth/auth.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/auth/local-auth.guard.ts",
+        "../src/auth/jwt-auth.guard.ts",
+        "../src/auth/auth.service.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/graceful-fs/index.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/auth/auth.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/auth/auth.service.ts",
@@ -8100,6 +8115,7 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/user/user.module.ts",
         "../src/user/user.entity.ts",
+        "../src/auth/auth.controller.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -14366,6 +14382,9 @@
       "../src/auth/jwt.strategy.ts": [
         "../node_modules/@types/passport-jwt/index.d.ts"
       ],
+      "../src/auth/auth.controller.ts": [
+        "../src/auth/auth.service.ts"
+      ],
       "../node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/common/interfaces/index.d.ts",
@@ -14946,6 +14965,9 @@
       "../src/migration/1588708664924-second.ts": [
         "../node_modules/typeorm/index.d.ts"
       ],
+      "../src/migration/1588708752005-second2.ts": [
+        "../node_modules/typeorm/index.d.ts"
+      ],
       "../node_modules/@types/anymatch/index.d.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -15267,9 +15289,6 @@
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/migration/1588708752005-second2.ts": [
-        "../node_modules/typeorm/index.d.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -15833,7 +15852,6 @@
       "../src/auth/auth.constants.ts",
       "../src/user/user.entity.ts",
       "../src/user/user.service.ts",
-      "../src/auth/auth.service.ts",
       "../src/auth/jwt-auth.guard.ts",
       "../src/app.controller.ts",
       "../node_modules/@types/passport-strategy/index.d.ts",
@@ -15842,6 +15860,7 @@
       "../node_modules/@types/passport-jwt/index.d.ts",
       "../src/auth/jwt.strategy.ts",
       "../src/user/user.module.ts",
+      "../src/auth/auth.controller.ts",
       "../src/auth/auth.module.ts",
       "../node_modules/@nestjs/websockets/adapters/ws-adapter.d.ts",
       "../node_modules/@nestjs/websockets/adapters/index.d.ts",
@@ -15915,6 +15934,7 @@
       "../src/main.ts",
       "../src/migration/1588708622594-first.ts",
       "../src/migration/1588708664924-second.ts",
+      "../src/migration/1588708752005-second2.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",
@@ -15955,7 +15975,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/migration/1588708752005-second2.ts"
+      "../src/auth/auth.service.ts"
     ]
   },
   "version": "3.8.3"

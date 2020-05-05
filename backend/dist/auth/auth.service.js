@@ -18,6 +18,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("../user/user.entity");
 const typeorm_2 = require("typeorm");
 const user_service_1 = require("../user/user.service");
+const bc = require("bcrypt");
 let AuthService = class AuthService {
     constructor(usersService, jwtService, userRepository) {
         this.usersService = usersService;
@@ -25,10 +26,22 @@ let AuthService = class AuthService {
         this.userRepository = userRepository;
     }
     async validateUser(username, pass) {
-        const user = await this.userRepository.findOne({
-            where: { username },
-        });
-        return null;
+        console.log(username);
+        try {
+            const userAuth = await this.userRepository.findOne({
+                where: { username },
+            });
+            bc.compare(pass, userAuth.password, function (err, result) {
+                console.log(result);
+            });
+            const user = await this.userRepository.findOne({
+                where: { username },
+            });
+            return userAuth;
+        }
+        catch (error) {
+            return null;
+        }
     }
     async login(user) {
         const payload = { username: user.username, sub: user.id };
