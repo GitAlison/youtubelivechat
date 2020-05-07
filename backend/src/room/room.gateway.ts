@@ -4,8 +4,12 @@ import {
   OnGatewayDisconnect,
   WebSocketServer,
   SubscribeMessage,
+  ConnectedSocket,
+  MessageBody,
 } from '@nestjs/websockets';
 import { RoomService } from './room.service';
+import { UseInterceptors } from '@nestjs/common';
+import { UserInterceptor } from 'src/auth/user.interceptor';
 
 @WebSocketGateway()
 export class RoomGateWay implements OnGatewayConnection, OnGatewayDisconnect {
@@ -23,18 +27,18 @@ export class RoomGateWay implements OnGatewayConnection, OnGatewayDisconnect {
     this.server.emit('users', this.users);
   }
 
+  @UseInterceptors(UserInterceptor)
   @SubscribeMessage('room')
-  async onRoom(client, message) {
-    switch (message['type']) {
+  async onRoom(@ConnectedSocket() client, @MessageBody() data) {
+    switch (data['type']) {
       case 'send_message':
-        let messageCreated = await this.roomService.createMessage(
-          message['message'],
-        );
+        let messageCreated = await this.roomService.createMessage(data);
         console.log(messageCreated);
         client.broadcast.emit('room', messageCreated);
         break;
+
       case 'open':
-        await this.roomService.createRoom(message['message']);
+        await this.roomService.createRoom(data['message']);
 
       default:
         break;

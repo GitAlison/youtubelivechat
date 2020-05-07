@@ -1,16 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { MessageEntity } from './message.entity';
 
 @Entity('room')
-export class RoomEntity {
+export class RoomEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ unique: true })
   video: string;
 
-  @Column({ default: Date() })
-  createdAt: Date;
+  @CreateDateColumn()
+  created: Date;
+
+  @UpdateDateColumn()
+  updated: Date;
 
   @OneToMany(
     type => MessageEntity,

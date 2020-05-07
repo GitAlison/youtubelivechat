@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -16,7 +16,6 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    console.log(username);
     try {
       const userAuth = await this.userRepository.findOne({
         where: { username },
@@ -41,8 +40,17 @@ export class AuthService {
 
   async register(user: any) {
     const payload = { username: user.username, password: user.password };
-    const userPayload = await this.userRepository.create(payload);
-    const userCreated = await this.userRepository.save(userPayload);
-    return this.login(userCreated);
+
+    let userVerified = await this.userRepository.findOne({
+      username: user.username,
+    });
+
+    if (userVerified) {
+      throw new BadRequestException('Nome de Usuario já existe');
+    }
+
+    const newUser = await this.userRepository.create(payload).save();
+
+    return this.login(newUser);
   }
 }

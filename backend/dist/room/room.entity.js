@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const message_entity_1 = require("./message.entity");
-let RoomEntity = class RoomEntity {
+let RoomEntity = class RoomEntity extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
@@ -22,9 +22,13 @@ __decorate([
     __metadata("design:type", String)
 ], RoomEntity.prototype, "video", void 0);
 __decorate([
-    typeorm_1.Column({ default: Date() }),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], RoomEntity.prototype, "createdAt", void 0);
+], RoomEntity.prototype, "created", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], RoomEntity.prototype, "updated", void 0);
 __decorate([
     typeorm_1.OneToMany(type => message_entity_1.MessageEntity, message => message.room.id),
     __metadata("design:type", message_entity_1.MessageEntity)

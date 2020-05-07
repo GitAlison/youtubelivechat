@@ -3,7 +3,7 @@
    "database": "database.sqlite",
    "synchronize": false,
    "logging": false,
-   "entities": ["dist/**/*.entity{.ts,.js}"],
+   "entities": ["dist/**/*.entity{.ts,.js}", "dist/entity/*.entity{.ts,.js}"],
    "migrations": [
       "dist/migration/*{.ts,.js}"
    ],

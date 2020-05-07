@@ -11,7 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
 const room_entity_1 = require("./room.entity");
-let MessageEntity = class MessageEntity {
+const user_entity_1 = require("../user/user.entity");
+let MessageEntity = class MessageEntity extends typeorm_1.BaseEntity {
 };
 __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
@@ -22,14 +23,23 @@ __decorate([
     __metadata("design:type", String)
 ], MessageEntity.prototype, "text", void 0);
 __decorate([
-    typeorm_1.Column({ default: Date() }),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], MessageEntity.prototype, "createdAt", void 0);
+], MessageEntity.prototype, "created", void 0);
 __decorate([
-    typeorm_1.ManyToOne(type => room_entity_1.RoomEntity, { nullable: true }),
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], MessageEntity.prototype, "updated", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => room_entity_1.RoomEntity, room => room.id, { cascade: true }),
     typeorm_1.JoinColumn(),
     __metadata("design:type", room_entity_1.RoomEntity)
 ], MessageEntity.prototype, "room", void 0);
+__decorate([
+    typeorm_1.ManyToOne(type => user_entity_1.UserEntity, user => user.id, { cascade: true }),
+    typeorm_1.JoinColumn(),
+    __metadata("design:type", user_entity_1.UserEntity)
+], MessageEntity.prototype, "user", void 0);
 MessageEntity = __decorate([
     typeorm_1.Entity('message')
 ], MessageEntity);

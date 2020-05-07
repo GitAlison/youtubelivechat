@@ -1,6 +1,17 @@
-import { Controller, Get, Body, Post } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Body,
+  Post,
+  UseGuards,
+  Req,
+  UseInterceptors,
+  ClassSerializerInterceptor,
+} from '@nestjs/common';
 import { RoomService } from './room.service';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller('room')
 export class RoomController {
   constructor(private roomService: RoomService) {}
@@ -11,6 +22,7 @@ export class RoomController {
   }
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   createMessage(@Body() body) {
     return this.roomService.createMessage(body);
   }

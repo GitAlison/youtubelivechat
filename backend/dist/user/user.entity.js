@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const class_transformer_1 = require("class-transformer");
 const bcrypt = require('bcrypt');
-let UserEntity = class UserEntity {
+let UserEntity = class UserEntity extends typeorm_1.BaseEntity {
     applybcript() {
         const hash = bcrypt.hashSync(this.password, 10);
         this.password = hash;
@@ -22,17 +23,22 @@ __decorate([
     __metadata("design:type", Number)
 ], UserEntity.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ unique: true }),
     __metadata("design:type", String)
 ], UserEntity.prototype, "username", void 0);
 __decorate([
-    typeorm_1.Column(),
+    typeorm_1.Column({ select: false }),
+    class_transformer_1.Exclude(),
     __metadata("design:type", String)
 ], UserEntity.prototype, "password", void 0);
 __decorate([
-    typeorm_1.Column({ default: Date() }),
+    typeorm_1.CreateDateColumn(),
     __metadata("design:type", Date)
-], UserEntity.prototype, "createdAt", void 0);
+], UserEntity.prototype, "created", void 0);
+__decorate([
+    typeorm_1.UpdateDateColumn(),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "updated", void 0);
 __decorate([
     typeorm_1.AfterUpdate(),
     typeorm_1.BeforeInsert(),

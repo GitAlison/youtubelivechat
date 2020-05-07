@@ -1,7 +1,11 @@
+import { BaseEntity } from 'typeorm';
 import { RoomEntity } from './room.entity';
-export declare class MessageEntity {
+import { UserEntity } from 'src/user/user.entity';
+export declare class MessageEntity extends BaseEntity {
     id: number;
     text: string;
-    createdAt: Date;
+    created: Date;
+    updated: Date;
     room: RoomEntity;
+    user: UserEntity;
 }

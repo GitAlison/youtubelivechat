@@ -26,9 +26,12 @@ export class RoomService {
   sendMessage(videoId, text) {
     this.socketClient.emit('room', {
       type: 'send_message',
-      message: {
+      headers: {
+        jwt: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFsaXNvbiIsInN1YiI6MSwiaWF0IjoxNTg4Nzk2MDA0LCJleHAiOjE1ODg4OTYwMDN9._TtaItKK_V-kiYRduGKd2jwMaqbO-RBEt8AXxtiTXvk`,
+      },
+      content: {
         text: text,
-        videoId: videoId,
+        video: videoId,
       },
     });
   }

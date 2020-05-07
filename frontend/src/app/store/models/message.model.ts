@@ -1,6 +1,8 @@
+import { User } from 'src/app/auth/store/auth/user.model';
+
 export interface Message {
   id: number;
-  user?: string;
+  user?: User;
   text: string;
-  createdAt: Date;
+  created: Date;
 }

@@ -27,9 +27,9 @@
         </ion-avatar>
 
         <ion-label class="ion-text-wrap">
-          <h5><b>Usuário</b></h5>
+          <h5><b>{{message?.user?.username}}</b></h5>
           <p>{{message?.text}}</p>
-          <p>{{message?.createdAt|date}}</p>
+          <p>{{message?.created|date}}</p>
         </ion-label>
       </ion-item>
     </ion-list>

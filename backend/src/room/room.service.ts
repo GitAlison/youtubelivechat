@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Req } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RoomEntity } from './room.entity';
 import { Repository } from 'typeorm';
 import { MessageEntity } from './message.entity';
+import { UserEntity } from 'src/user/user.entity';
 
 @Injectable()
 export class RoomService {
@@ -11,6 +12,8 @@ export class RoomService {
     private readonly roomRepository: Repository<RoomEntity>,
     @InjectRepository(MessageEntity)
     private readonly messageRepository: Repository<MessageEntity>,
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async createRoom(video: string): Promise<any> {
@@ -20,34 +23,48 @@ export class RoomService {
       return room;
     } else {
       let room = this.roomRepository.create({ video });
-      console.log(room);
       return await this.roomRepository.save(room);
     }
   }
 
-  async createMessage(message: any): Promise<any> {
-    const room = await this.roomRepository.findOne({ video: message.video });
-    console.log(message);
-    if (!room) {
-      let room = await this.roomRepository.create({ video: message.video });
-      await this.roomRepository.save(room);
-
-      let newMessage = this.messageRepository.create({
-        room: room,
-        text: message['text'],
-      });
-      return this.messageRepository.save(newMessage);
-    }
-    let newMessage = this.messageRepository.create({
-      room: room,
-      text: message['text'],
+  async createMessage(data: any): Promise<any> {
+    const video = await this.roomRepository.findOne({
+      video: data.content.video,
     });
-    return this.messageRepository.save(newMessage);
+
+    if (!video) {
+      const room = await this.roomRepository
+        .create({ video: data.content.video })
+        .save();
+
+      return this.messageRepository
+        .create({
+          user: data.user,
+          room: room,
+          text: data.content.text,
+        })
+        .save();
+    }
+
+    let newMessage = await this.messageRepository
+      .create({
+        user: data.user,
+        room: video,
+        text: data.content.text,
+      })
+      .save();
+
+    let objectResponse = {
+      id: newMessage.id,
+      text: newMessage.text,
+      user: data.user,
+      created: newMessage.created,
+    };
+    return objectResponse;
   }
 
   async findAllMessages(): Promise<any[]> {
-    let messages = this.messageRepository.find();
-    return messages;
+    return this.messageRepository.find({ relations: ['user'] });
   }
 
   findAll(): Promise<RoomEntity[]> {

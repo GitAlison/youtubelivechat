@@ -11,6 +11,7 @@ import {
   AddMessageAction,
 } from 'src/app/store/message/message.actions';
 import { Observable } from 'rxjs';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-video-page',
@@ -22,6 +23,7 @@ export class VideoPage implements OnInit, OnDestroy {
   users: number = 0;
   input = '';
   constructor(
+    private menu: MenuController,
     private roomService: RoomService,
     private activatedRoute: ActivatedRoute,
     private store: Store<MessageState>
@@ -43,7 +45,7 @@ export class VideoPage implements OnInit, OnDestroy {
         new AddMessageAction({
           id: new Date().getMilliseconds(),
           text: this.input,
-          createdAt: new Date(),
+          created: new Date(),
         })
       );
       this.roomService.sendMessage(this.videoId, this.input);
@@ -65,6 +67,10 @@ export class VideoPage implements OnInit, OnDestroy {
 
   openRoom() {
     this.roomService.openRoom(this.videoId);
+  }
+
+  toggleMenuChat() {
+    this.menu.toggle('chat');
   }
 
   fromVideo(video) {

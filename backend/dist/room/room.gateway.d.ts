@@ -7,5 +7,5 @@ export declare class RoomGateWay implements OnGatewayConnection, OnGatewayDiscon
     constructor(roomService: RoomService);
     handleConnection(client: any): Promise<void>;
     handleDisconnect(): Promise<void>;
-    onRoom(client: any, message: any): Promise<void>;
+    onRoom(client: any, data: any): Promise<void>;
 }

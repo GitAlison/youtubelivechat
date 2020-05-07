@@ -1,8 +1,6 @@
 import {
   Component,
   OnInit,
-  Input,
-  OnChanges,
   ViewChild,
   OnDestroy,
 } from '@angular/core';
@@ -20,7 +18,7 @@ import {
   AddMessageAction,
   RemoveMessagesAction,
 } from 'src/app/store/message/message.actions';
-import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-chat-messages',

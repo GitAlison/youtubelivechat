@@ -26,7 +26,6 @@ let AuthService = class AuthService {
         this.userRepository = userRepository;
     }
     async validateUser(username, pass) {
-        console.log(username);
         try {
             const userAuth = await this.userRepository.findOne({
                 where: { username },
@@ -51,9 +50,14 @@ let AuthService = class AuthService {
     }
     async register(user) {
         const payload = { username: user.username, password: user.password };
-        const userPayload = await this.userRepository.create(payload);
-        const userCreated = await this.userRepository.save(userPayload);
-        return this.login(userCreated);
+        let userVerified = await this.userRepository.findOne({
+            username: user.username,
+        });
+        if (userVerified) {
+            throw new common_1.BadRequestException('Nome de Usuario já existe');
+        }
+        const newUser = await this.userRepository.create(payload).save();
+        return this.login(newUser);
     }
 };
 AuthService = __decorate([

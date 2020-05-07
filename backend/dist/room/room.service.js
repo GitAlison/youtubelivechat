@@ -17,10 +17,12 @@ const typeorm_1 = require("@nestjs/typeorm");
 const room_entity_1 = require("./room.entity");
 const typeorm_2 = require("typeorm");
 const message_entity_1 = require("./message.entity");
+const user_entity_1 = require("../user/user.entity");
 let RoomService = class RoomService {
-    constructor(roomRepository, messageRepository) {
+    constructor(roomRepository, messageRepository, userRepository) {
         this.roomRepository = roomRepository;
         this.messageRepository = messageRepository;
+        this.userRepository = userRepository;
     }
     async createRoom(video) {
         console.log(video);
@@ -30,31 +32,42 @@ let RoomService = class RoomService {
         }
         else {
             let room = this.roomRepository.create({ video });
-            console.log(room);
             return await this.roomRepository.save(room);
         }
     }
-    async createMessage(message) {
-        const room = await this.roomRepository.findOne({ video: message.video });
-        console.log(message);
-        if (!room) {
-            let room = await this.roomRepository.create({ video: message.video });
-            await this.roomRepository.save(room);
-            let newMessage = this.messageRepository.create({
-                room: room,
-                text: message['text'],
-            });
-            return this.messageRepository.save(newMessage);
-        }
-        let newMessage = this.messageRepository.create({
-            room: room,
-            text: message['text'],
+    async createMessage(data) {
+        const video = await this.roomRepository.findOne({
+            video: data.content.video,
         });
-        return this.messageRepository.save(newMessage);
+        if (!video) {
+            const room = await this.roomRepository
+                .create({ video: data.content.video })
+                .save();
+            return this.messageRepository
+                .create({
+                user: data.user,
+                room: room,
+                text: data.content.text,
+            })
+                .save();
+        }
+        let newMessage = await this.messageRepository
+            .create({
+            user: data.user,
+            room: video,
+            text: data.content.text,
+        })
+            .save();
+        let objectResponse = {
+            id: newMessage.id,
+            text: newMessage.text,
+            user: data.user,
+            created: newMessage.created,
+        };
+        return objectResponse;
     }
     async findAllMessages() {
-        let messages = this.messageRepository.find();
-        return messages;
+        return this.messageRepository.find({ relations: ['user'] });
     }
     findAll() {
         return this.roomRepository.find();
@@ -64,7 +77,9 @@ RoomService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(room_entity_1.RoomEntity)),
     __param(1, typeorm_1.InjectRepository(message_entity_1.MessageEntity)),
+    __param(2, typeorm_1.InjectRepository(user_entity_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository,
         typeorm_2.Repository])
 ], RoomService);
 exports.RoomService = RoomService;
