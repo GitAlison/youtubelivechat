@@ -26,7 +26,7 @@ export class RoomService {
   }
 
   connnect() {
-    this.socketClient.ioSocket.io.uri = 'http://localhost:3000'; //new uri
+    this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
     this.socketClient.connect(); //manually connection
     console.log('connect');
   }
@@ -49,8 +49,8 @@ export class RoomService {
     });
   }
 
-  messageReceived() {
-    return this.socketClient.fromEvent('room');
+  messageReceived(video) {
+    return this.socketClient.fromEvent(`room${video}`);
   }
   getMessages() {
     return this.http.get<Message[]>(this.api);

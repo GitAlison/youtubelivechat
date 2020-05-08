@@ -19,8 +19,9 @@
   </ng-container>
 
   <ng-template #messagesTemplate>
-    <ion-list *ngFor="let message of messages">
-      <ion-item lines="full">
+    <ion-list>
+      {{video}}
+      <ion-item lines="full" *ngFor="let message of messages">
         <ion-avatar slot="start">
           <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y" />
           <h5></h5>
@@ -29,7 +30,7 @@
         <ion-label class="ion-text-wrap">
           <h5><b>{{message?.user?.username}}</b></h5>
           <p>{{message?.text}}</p>
-          <p>{{message?.created|date}}</p>
+          <p>as: {{message?.created|date:'H:ss'}}</p>
         </ion-label>
       </ion-item>
     </ion-list>

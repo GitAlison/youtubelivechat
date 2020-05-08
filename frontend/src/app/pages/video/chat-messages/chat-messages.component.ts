@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import {
@@ -18,7 +13,8 @@ import {
   AddMessageAction,
   RemoveMessagesAction,
 } from 'src/app/store/message/message.actions';
-
+import { User } from 'src/app/auth/store/auth/user.model';
+import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
 
 @Component({
   selector: 'app-chat-messages',
@@ -28,16 +24,16 @@ import {
 export class ChatMessagesComponent implements OnInit, OnDestroy {
   messages: Message[];
   loading$: Observable<boolean>;
-
   subcription: Subscription = new Subscription();
   @ViewChild('chat') chat: IonContent;
-
+  @Input() video;
   constructor(
     private roomService: RoomService,
     private store: Store<MessageState>
   ) {}
 
   ngOnInit() {
+    console.log(this.video);
     this.loading$ = this.store.select(selectLoading);
 
     this.subcription.add(
@@ -48,15 +44,17 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
     );
 
     this.subcription.add(
-      this.roomService.messageReceived().subscribe((data: Message) => {
-        this.store.dispatch(new AddMessageAction(data));
-      })
+      this.roomService
+        .messageReceived(this.video)
+        .subscribe((data: Message) => {
+          this.store.dispatch(new AddMessageAction(data));
+        })
     );
   }
 
   scrollToBottom(): void {
     setTimeout(() => {
-      this.chat.scrollToBottom(300);
+      this.chat.scrollToBottom(500);
     });
   }
   ngOnDestroy() {

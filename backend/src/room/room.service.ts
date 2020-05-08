@@ -1,4 +1,4 @@
-import { Injectable, Req } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RoomEntity } from './room.entity';
 import { Repository } from 'typeorm';
@@ -12,8 +12,6 @@ export class RoomService {
     private readonly roomRepository: Repository<RoomEntity>,
     @InjectRepository(MessageEntity)
     private readonly messageRepository: Repository<MessageEntity>,
-    @InjectRepository(UserEntity)
-    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async createRoom(video: string): Promise<any> {
@@ -46,21 +44,26 @@ export class RoomService {
         .save();
     }
 
-    let newMessage = await this.messageRepository
-      .create({
+    try {
+      let newMessage = await this.messageRepository
+        .create({
+          user: data.user,
+          room: video,
+          text: data.content.text,
+        })
+        .save();
+      let objectResponse = {
+        id: newMessage.id,
+        text: newMessage.text,
         user: data.user,
-        room: video,
-        text: data.content.text,
-      })
-      .save();
-
-    let objectResponse = {
-      id: newMessage.id,
-      text: newMessage.text,
-      user: data.user,
-      created: newMessage.created,
-    };
-    return objectResponse;
+        room: video.video,
+        created: newMessage.created,
+      };
+      return objectResponse;
+    } catch (error) {
+      console.log(error);
+      throw new NotFoundException('User Not found');
+    }
   }
 
   async findAllMessages(): Promise<any[]> {

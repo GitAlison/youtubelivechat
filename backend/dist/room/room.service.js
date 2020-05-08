@@ -19,10 +19,9 @@ const typeorm_2 = require("typeorm");
 const message_entity_1 = require("./message.entity");
 const user_entity_1 = require("../user/user.entity");
 let RoomService = class RoomService {
-    constructor(roomRepository, messageRepository, userRepository) {
+    constructor(roomRepository, messageRepository) {
         this.roomRepository = roomRepository;
         this.messageRepository = messageRepository;
-        this.userRepository = userRepository;
     }
     async createRoom(video) {
         console.log(video);
@@ -51,20 +50,27 @@ let RoomService = class RoomService {
             })
                 .save();
         }
-        let newMessage = await this.messageRepository
-            .create({
-            user: data.user,
-            room: video,
-            text: data.content.text,
-        })
-            .save();
-        let objectResponse = {
-            id: newMessage.id,
-            text: newMessage.text,
-            user: data.user,
-            created: newMessage.created,
-        };
-        return objectResponse;
+        try {
+            let newMessage = await this.messageRepository
+                .create({
+                user: data.user,
+                room: video,
+                text: data.content.text,
+            })
+                .save();
+            let objectResponse = {
+                id: newMessage.id,
+                text: newMessage.text,
+                user: data.user,
+                room: video.video,
+                created: newMessage.created,
+            };
+            return objectResponse;
+        }
+        catch (error) {
+            console.log(error);
+            throw new common_1.NotFoundException('User Not found');
+        }
     }
     async findAllMessages() {
         return this.messageRepository.find({ relations: ['user'] });
@@ -77,9 +83,7 @@ RoomService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(room_entity_1.RoomEntity)),
     __param(1, typeorm_1.InjectRepository(message_entity_1.MessageEntity)),
-    __param(2, typeorm_1.InjectRepository(user_entity_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        typeorm_2.Repository,
         typeorm_2.Repository])
 ], RoomService);
 exports.RoomService = RoomService;

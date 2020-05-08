@@ -3,11 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-menu-button menu="chat">
-        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
@@ -22,18 +18,33 @@
     </ion-header>
 
     <ion-content>
-      <app-chat-messages></app-chat-messages>
+      <app-chat-messages [video]="videoId"></app-chat-messages>
     </ion-content>
 
     <ion-footer>
-      <ion-item color="light">
-        <ion-input autofocus="true" maxlength="150" (keydown.enter)="sendMessage()" [(ngModel)]="input"
-          placeholder="Escreva aqui um comentario">
-        </ion-input>
-        <ion-button (click)="sendMessage()" fill="clear" color="dark" shape="round" slot="end">
-          <ion-icon name="send-outline" slot="icon-only"></ion-icon>
-        </ion-button>
-      </ion-item>
+
+      <ng-container *ngIf="authState?.logged;else tempLogged;">
+        <ion-toolbar color="light">
+          <ion-item color="light">
+            <ion-input autofocus="true" maxlength="150" (keydown.enter)="sendMessage()" [(ngModel)]="input"
+              placeholder="Escreva aqui um comentario">
+            </ion-input>
+          </ion-item>
+          <ion-buttons slot="end">
+            <ion-button (click)="sendMessage()" fill="clear" color="dark" shape="round" slot="end">
+              <ion-icon name="send-outline" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ng-container>
+      <ng-template #tempLogged>
+        <ion-toolbar color="light">
+          <ion-title>
+            Entre para interagir
+          </ion-title>
+        </ion-toolbar>
+      </ng-template>
+
     </ion-footer>
   </ion-menu>
 
@@ -44,17 +55,17 @@
     <div class="video">
       <app-video [videoId]="videoId" (statusVideo)="fromVideo($event)"></app-video>
     </div>
-    <ion-toolbar>
+    <ion-toolbar color="light">
       <ion-buttons slot="end">
-        <ion-button>
+        <!-- <ion-button>
           <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-        </ion-button>
-        <ion-button (click)="toggleMenuChat()">
-          <ion-icon slot="icon-only" name="chatbox-ellipses-outline"></ion-icon>
-        </ion-button>
-        <ion-button>
+        </ion-button> -->
+        <ion-menu-button menu="chat">
+          <ion-icon color="dark" name="chatbox-ellipses-outline"></ion-icon>
+        </ion-menu-button>
+        <!-- <ion-button>
           <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
-        </ion-button>
+        </ion-button> -->
       </ion-buttons>
     </ion-toolbar>
 

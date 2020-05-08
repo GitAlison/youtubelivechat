@@ -33,45 +33,13 @@ export class RoomGateWay implements OnGatewayConnection, OnGatewayDisconnect {
     switch (data['type']) {
       case 'send_message':
         let messageCreated = await this.roomService.createMessage(data);
-        console.log(messageCreated);
-        client.broadcast.emit('room', messageCreated);
+        client.broadcast.emit(`room${messageCreated.room}`, messageCreated);
         break;
-
       case 'open':
         await this.roomService.createRoom(data['message']);
-
+        break;
       default:
         break;
     }
-    // let messages = await this.roomService.findAllMessages();
-    // console.log(messages);
-    // client.broadcast.emit('room', messages);
-    // switch (message['type']) {
-    //   case 'send_message':
-    //     // console.log(message)
-    //     // let messages = this.roomService.findAllMessages();
-    //     // console.log(message)
-    //     let messageCreated = await this.roomService.createMessage(
-    //       message['message'],
-    //     );
-    //     client.broadcast.emit('newMessage', messageCreated);
-    //     // client.broadcast.emit('room', message['message']);
-    //     break;
-
-    //   case 'open':
-    //     // await this.roomService.createRoom(message['message']);
-    //     // let rooms = await this.roomService.findAll();
-    //     // console.log(rooms);
-
-    //     // let messages = await this.roomService.findAllMessages();
-    //     // console.log(messages);
-    //     // client.broadcast.emit('room', messages);
-
-    //     client.broadcast.emit('room', message['message']);
-    //     break;
-
-    //   default:
-    //     break;
-    // }
   }
 }

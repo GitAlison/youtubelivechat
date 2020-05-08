@@ -34,7 +34,7 @@ export function reducerMessage(
 
     case MessageActionTypes.REMOVE_MESSAGES:
       return adapter.removeAll({ ...state, loading: false });
-      
+
     default:
       return state;
   }

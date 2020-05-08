@@ -33,11 +33,11 @@ let RoomGateWay = class RoomGateWay {
         switch (data['type']) {
             case 'send_message':
                 let messageCreated = await this.roomService.createMessage(data);
-                console.log(messageCreated);
-                client.broadcast.emit('room', messageCreated);
+                client.broadcast.emit(`room${messageCreated.room}`, messageCreated);
                 break;
             case 'open':
                 await this.roomService.createRoom(data['message']);
+                break;
             default:
                 break;
         }

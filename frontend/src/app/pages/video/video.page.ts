@@ -3,15 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { RoomService } from '../../services/room.service';
 import {
   MessageState,
-  selectLoading,
 } from 'src/app/store/message/message.reducers';
 import { Store } from '@ngrx/store';
 import {
   GetMessagesAction,
   AddMessageAction,
 } from 'src/app/store/message/message.actions';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MenuController } from '@ionic/angular';
+import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
 
 @Component({
   selector: 'app-video-page',
@@ -22,29 +22,46 @@ export class VideoPage implements OnInit, OnDestroy {
   videoId = '';
   users: number = 0;
   input = '';
+  id = 999;
+  authState: AuthState;
+  subscription: Subscription = new Subscription();
+
   constructor(
     private menu: MenuController,
     private roomService: RoomService,
     private activatedRoute: ActivatedRoute,
-    private store: Store<MessageState>
+    private store: Store<MessageState>,
+    private storeAuth: Store<AuthState>
   ) {
     this.videoId = this.activatedRoute.snapshot.paramMap.get('id');
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.subscription.add(
+      this.storeAuth
+        .select(getAuthState)
+        .subscribe((data) => (this.authState = data))
+    );
+  }
 
   getData() {
-    this.roomService
-      .getUsers()
-      .subscribe((users: number) => (this.users = users));
+    this.subscription.add(
+      this.roomService
+        .getUsers()
+        .subscribe((users: number) => (this.users = users))
+    );
   }
 
   sendMessage() {
     if (this.input !== '') {
+      this.id++;
       this.store.dispatch(
         new AddMessageAction({
-          id: new Date().getMilliseconds(),
+          id: this.id,
           text: this.input,
+          user: {
+            username: this.authState.user.username,
+          },
           created: new Date(),
         })
       );

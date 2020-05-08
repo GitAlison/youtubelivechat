@@ -2422,8 +2422,8 @@
         "signature": "68417c5588ca537022d9930f6e64d621b8357d67957a3a02ebafc7ba8d014c42"
       },
       "../src/room/room.service.ts": {
-        "version": "f5d5b10b2591e517b73a3c8f1302f7d1c690b949902461c95a20edb56b93be07",
-        "signature": "e1f6cbfc13e8b7493241b4b514a0a1c7965d5b24e66d34e663b079f5e24a62ac"
+        "version": "4e93d5aea1cd3b34308a52a675470c85bc312953ebbaf103bcb897672e6a8db1",
+        "signature": "0e2a56abb85afc8d7e55c50b04dd274603a294c6d087263b5371f04f07f642b6"
       },
       "../node_modules/rxjs/internal/operators/audit.d.ts": {
         "version": "fe936a68d281ccc2060f8c3de69a0682a807c8fd1b8abccc0a91b83195ca0f94",
@@ -2842,7 +2842,7 @@
         "signature": "dfdb898cac272b3b1fa540d58bfeff5c519dcf587ec55788b35b35b5b390b086"
       },
       "../src/room/room.gateway.ts": {
-        "version": "29ba0bc08d204b33de640e248ec4d9572719dda2fde3f17ea730f59cd45bf255",
+        "version": "e28288175d04f2d2f35b943ae3ec7d68ffd477bb327a34d2ad40010ba9c25231",
         "signature": "cc87d18168e9aac3c2411faeb957eb5b4127817820fdcf6f2c37f4cd47c20366"
       },
       "../src/room/room.controller.ts": {
@@ -16140,8 +16140,7 @@
       "../src/room/room.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/room/room.entity.ts",
-        "../src/room/message.entity.ts",
-        "../src/user/user.entity.ts"
+        "../src/room/message.entity.ts"
       ],
       "../node_modules/rxjs/internal/operators/audit.d.ts": [
         "../node_modules/rxjs/internal/types.d.ts",
@@ -18532,7 +18531,7 @@
       "../node_modules/rxjs/internal/operators/zipall.d.ts",
       "../node_modules/rxjs/operators/index.d.ts",
       "../src/auth/user.interceptor.ts",
-      "../src/room/room.gateway.ts",
+      "../src/room/room.controller.ts",
       "../src/room/room.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
@@ -18612,7 +18611,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/room/room.controller.ts"
+      "../src/room/room.gateway.ts"
     ]
   },
   "version": "3.8.3"

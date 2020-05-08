@@ -27,10 +27,10 @@ export function authReducer(
 
       localStorage.setItem('tokenAccess', actions.token.access_token);
       return { ...state, user: user, token: actions.token, logged: true };
-      
+
     case AuthActionTypes.AUTHENTICATE_LOGOUT:
       localStorage.removeItem('tokenAccess');
-      return { ...state, user: undefined, token: '' };
+      return { ...state, user: undefined, logged: false, token: '' };
     default:
       return state;
   }

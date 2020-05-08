@@ -13,7 +13,7 @@ import {
   AuthenticateSuccess,
   AuthenticateLogout,
 } from './auth/store/auth/auth.actions';
-import { User } from './auth/store/auth/user.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -31,6 +31,11 @@ export class AppComponent implements OnInit, OnDestroy {
     {
       title: 'YouTube',
       url: '/video/XkeIwhKIi84',
+      icon: 'videocam',
+    },
+    {
+      title: 'YouTube Red Hot',
+      url: '/video/BfOdWSiyWoc',
       icon: 'videocam',
     },
     {
