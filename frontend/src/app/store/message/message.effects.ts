@@ -10,7 +10,7 @@ export class MessageEffect {
   @Effect()
   getMessage$ = this.actions.pipe(
     ofType<ActionsMessage.GetMessagesAction>(ActionsMessage.MessageActionTypes.GET_MESSAGES),
-    switchMap(()=> this.serviceMessage.getMessages().pipe(
+    switchMap((data)=> this.serviceMessage.getMessages(data.video).pipe(
       map((dataService)=> new ActionsMessage.GetMessagesActionSuccess(dataService)),
       catchError((error)=> of(new ActionsMessage.GetMessagesActionFail(error)))
     ))

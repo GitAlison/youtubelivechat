@@ -19,15 +19,21 @@ const user_interceptor_1 = require("../auth/user.interceptor");
 let RoomGateWay = class RoomGateWay {
     constructor(roomService) {
         this.roomService = roomService;
+        this.rooms = new Map();
         this.users = 0;
     }
     async handleConnection(client) {
-        this.users++;
-        this.server.emit('users', this.users);
+        const user = client.handshake.query.user;
+        const video = client.handshake.query.video;
+        let newUsers = this.updateChatUsers(video, 'add');
+        console.log(newUsers);
+        console.log(this.rooms);
+        this.server.emit(`usersRoom${video}`, newUsers);
     }
-    async handleDisconnect() {
-        this.users--;
-        this.server.emit('users', this.users);
+    async handleDisconnect(client) {
+        const video = client.handshake.query.video;
+        let newUsers = this.updateChatUsers(video, 'remove');
+        this.server.emit(`usersRoom${video}`, newUsers);
     }
     async onRoom(client, data) {
         switch (data['type']) {
@@ -42,11 +48,42 @@ let RoomGateWay = class RoomGateWay {
                 break;
         }
     }
+    updateChatUsers(video, type) {
+        let roomUsers = this.rooms.get(video);
+        if (type === 'add') {
+            if (roomUsers >= 0) {
+                let newCount = roomUsers + 1;
+                this.rooms.set(video, newCount);
+                return newCount;
+            }
+            else {
+                this.rooms.set(video, 1);
+                return 1;
+            }
+        }
+        else {
+            let newCount = roomUsers - 1;
+            this.rooms.set(video, newCount);
+            return newCount;
+        }
+    }
 };
 __decorate([
     websockets_1.WebSocketServer(),
     __metadata("design:type", Object)
 ], RoomGateWay.prototype, "server", void 0);
+__decorate([
+    __param(0, websockets_1.ConnectedSocket()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], RoomGateWay.prototype, "handleConnection", null);
+__decorate([
+    __param(0, websockets_1.ConnectedSocket()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], RoomGateWay.prototype, "handleDisconnect", null);
 __decorate([
     common_1.UseInterceptors(user_interceptor_1.UserInterceptor),
     websockets_1.SubscribeMessage('room'),

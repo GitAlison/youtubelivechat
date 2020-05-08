@@ -30,7 +30,8 @@ __decorate([
     __metadata("design:type", Date)
 ], RoomEntity.prototype, "updated", void 0);
 __decorate([
-    typeorm_1.OneToMany(type => message_entity_1.MessageEntity, message => message.room.id),
+    typeorm_1.OneToMany(type => message_entity_1.MessageEntity, message => message.room),
+    typeorm_1.JoinColumn(),
     __metadata("design:type", message_entity_1.MessageEntity)
 ], RoomEntity.prototype, "messages", void 0);
 RoomEntity = __decorate([

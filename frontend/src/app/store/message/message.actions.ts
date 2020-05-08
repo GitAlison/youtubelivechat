@@ -12,6 +12,7 @@ export enum MessageActionTypes {
 
 export class GetMessagesAction implements Action {
   readonly type = MessageActionTypes.GET_MESSAGES;
+  constructor(public video: string) {}
 }
 
 export class GetMessagesActionSuccess implements Action {

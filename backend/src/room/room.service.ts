@@ -66,8 +66,13 @@ export class RoomService {
     }
   }
 
-  async findAllMessages(): Promise<any[]> {
-    return this.messageRepository.find({ relations: ['user'] });
+  async findAllMessages(video): Promise<any[]> {
+    let room = await this.roomRepository.findOne({ where: { video: video } });
+
+    return this.messageRepository.find({
+      where: { room: { id: room.id } },
+      relations: ['user'],
+    });
   }
 
   findAll(): Promise<RoomEntity[]> {

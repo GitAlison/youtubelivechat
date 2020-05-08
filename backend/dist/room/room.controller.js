@@ -19,17 +19,19 @@ let RoomController = class RoomController {
     constructor(roomService) {
         this.roomService = roomService;
     }
-    getMessages() {
-        return this.roomService.findAllMessages();
+    getMessages(video) {
+        console.log('from controller', video);
+        return this.roomService.findAllMessages(video);
     }
     createMessage(body) {
         return this.roomService.createMessage(body);
     }
 };
 __decorate([
-    common_1.Get(),
+    common_1.Get(':video'),
+    __param(0, common_1.Param('video')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], RoomController.prototype, "getMessages", null);
 __decorate([

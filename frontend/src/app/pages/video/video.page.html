@@ -60,9 +60,13 @@
         <!-- <ion-button>
           <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
         </ion-button> -->
-        <ion-menu-button menu="chat">
+        <ion-button (click)="toggleMenuChat()">
+          <ion-icon slot="icon-only" name="chatbox-ellipses-outline"></ion-icon>
+        </ion-button>
+
+        <!-- <ion-menu-button menu="chat">
           <ion-icon color="dark" name="chatbox-ellipses-outline"></ion-icon>
-        </ion-menu-button>
+        </ion-menu-button> -->
         <!-- <ion-button>
           <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
         </ion-button> -->

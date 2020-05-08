@@ -14,17 +14,27 @@ import { UserInterceptor } from 'src/auth/user.interceptor';
 @WebSocketGateway()
 export class RoomGateWay implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() server;
-  users = 0;
-  constructor(private roomService: RoomService) {}
 
-  async handleConnection(client) {
-    this.users++;
-    this.server.emit('users', this.users);
+  rooms = new Map();
+  users = 0;
+
+  constructor(private roomService: RoomService) {}
+  async handleConnection(@ConnectedSocket() client) {
+    const user = client.handshake.query.user;
+    const video = client.handshake.query.video;
+
+    let newUsers = this.updateChatUsers(video, 'add');
+    console.log(newUsers);
+    console.log(this.rooms);
+    this.server.emit(`usersRoom${video}`, newUsers);
   }
 
-  async handleDisconnect() {
-    this.users--;
-    this.server.emit('users', this.users);
+  async handleDisconnect(@ConnectedSocket() client) {
+    const video = client.handshake.query.video;
+
+    let newUsers = this.updateChatUsers(video, 'remove');
+
+    this.server.emit(`usersRoom${video}`, newUsers);
   }
 
   @UseInterceptors(UserInterceptor)
@@ -40,6 +50,23 @@ export class RoomGateWay implements OnGatewayConnection, OnGatewayDisconnect {
         break;
       default:
         break;
+    }
+  }
+  updateChatUsers(video, type) {
+    let roomUsers = this.rooms.get(video);
+    if (type === 'add') {
+      if (roomUsers >= 0) {
+        let newCount = roomUsers + 1;
+        this.rooms.set(video, newCount);
+        return newCount;
+      } else {
+        this.rooms.set(video, 1);
+        return 1;
+      }
+    } else {
+      let newCount = roomUsers - 1;
+      this.rooms.set(video, newCount);
+      return newCount;
     }
   }
 }

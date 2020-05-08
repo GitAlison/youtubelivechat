@@ -33,9 +33,7 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    console.log(this.video);
     this.loading$ = this.store.select(selectLoading);
-
     this.subcription.add(
       this.store.select(selectAllMessages).subscribe((data) => {
         this.messages = data;

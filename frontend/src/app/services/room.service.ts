@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { HttpClient } from '@angular/common/http';
 import { Message } from '../store/models/message.model';
-import { Observable } from 'rxjs';
-import { AuthState, getAuthState } from '../auth/store/auth/auth.reducer';
+
+import { AuthState } from '../auth/store/auth/auth.reducer';
 import { Store } from '@ngrx/store';
 import { Token } from '../auth/store/auth/user.model';
 
@@ -25,9 +25,13 @@ export class RoomService {
     // });
   }
 
-  connnect() {
+  connnect(video, username) {
     this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
-    this.socketClient.connect(); //manually connection
+    this.socketClient.ioSocket.io.opts.query = {
+      video: video,
+      user: username,
+    };
+    this.socketClient.connect();
     console.log('connect');
   }
 
@@ -52,12 +56,13 @@ export class RoomService {
   messageReceived(video) {
     return this.socketClient.fromEvent(`room${video}`);
   }
-  getMessages() {
-    return this.http.get<Message[]>(this.api);
+  getMessages(video: string) {
+    console.log(video)
+    return this.http.get<Message[]>(`${this.api}/${video}`);
   }
 
-  getUsers() {
-    return this.socketClient.fromEvent('users');
+  getCountUsersOnline(video) {
+    return this.socketClient.fromEvent(`usersRoom${video}`);
   }
 
   openRoom(videoId) {

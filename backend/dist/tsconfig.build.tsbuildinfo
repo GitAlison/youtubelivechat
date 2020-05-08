@@ -2418,12 +2418,12 @@
         "signature": "f7d9e17080168d6bd1db2d6bed136257530154134ceb16b2e9df6ba5d34a5dfe"
       },
       "../src/room/room.entity.ts": {
-        "version": "50b9324123abb3fa39be45b581dec7e353d255cc2291fd786358e472a73d5599",
+        "version": "2f7a192df459e5a2948f9ea8b165713ef7fca96ad27c9583ce8257b60400672b",
         "signature": "68417c5588ca537022d9930f6e64d621b8357d67957a3a02ebafc7ba8d014c42"
       },
       "../src/room/room.service.ts": {
-        "version": "4e93d5aea1cd3b34308a52a675470c85bc312953ebbaf103bcb897672e6a8db1",
-        "signature": "0e2a56abb85afc8d7e55c50b04dd274603a294c6d087263b5371f04f07f642b6"
+        "version": "2396e52fd4e08649560239698786b24e190176590c79efb5855c816104709564",
+        "signature": "a2cd87f8d3789fe591f8383868d3424182428603dabec7294328a321f2d23204"
       },
       "../node_modules/rxjs/internal/operators/audit.d.ts": {
         "version": "fe936a68d281ccc2060f8c3de69a0682a807c8fd1b8abccc0a91b83195ca0f94",
@@ -2842,12 +2842,12 @@
         "signature": "dfdb898cac272b3b1fa540d58bfeff5c519dcf587ec55788b35b35b5b390b086"
       },
       "../src/room/room.gateway.ts": {
-        "version": "e28288175d04f2d2f35b943ae3ec7d68ffd477bb327a34d2ad40010ba9c25231",
-        "signature": "cc87d18168e9aac3c2411faeb957eb5b4127817820fdcf6f2c37f4cd47c20366"
+        "version": "3ea28d2b35f20e6f9652ae5c8580b99c3a16e3d8eddede451a2bbf4b86b76586",
+        "signature": "0256f67561610007bbb93f5226fb880fed180342cf63d815affbd9f21ccddbb0"
       },
       "../src/room/room.controller.ts": {
-        "version": "f5454d3df6281d8d7ab5f5b82f17c8b3d80770e5358f81bed9ea6df26868936b",
-        "signature": "4b31b6f702572962a9c191fad7381e0c5b90a018353f5cd42a0440ce608f4b78"
+        "version": "5365f49ec99ee46abe0f9759113cb27869331f3a7195b8fc1fd72e90174e6c2c",
+        "signature": "13dcfc62f5dff7342cd0ff8b7d89956776c5ec65722505a97b6b3ed32382396e"
       },
       "../src/room/room.module.ts": {
         "version": "c53971c5f4c9cc30ea8b78a996978f7c1ad401c3f4538ebe2cdc4cd59a297139",
@@ -18426,7 +18426,6 @@
       "../node_modules/@nestjs/websockets/index.d.ts",
       "../src/room/message.entity.ts",
       "../src/room/room.entity.ts",
-      "../src/room/room.service.ts",
       "../node_modules/rxjs/internal/operators/audit.d.ts",
       "../node_modules/rxjs/internal/operators/audittime.d.ts",
       "../node_modules/rxjs/internal/operators/buffer.d.ts",
@@ -18531,6 +18530,7 @@
       "../node_modules/rxjs/internal/operators/zipall.d.ts",
       "../node_modules/rxjs/operators/index.d.ts",
       "../src/auth/user.interceptor.ts",
+      "../src/room/room.gateway.ts",
       "../src/room/room.controller.ts",
       "../src/room/room.module.ts",
       "../src/app.module.ts",
@@ -18611,7 +18611,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/room/room.gateway.ts"
+      "../src/room/room.service.ts"
     ]
   },
   "version": "3.8.3"

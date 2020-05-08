@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RoomService } from '../../services/room.service';
-import {
-  MessageState,
-} from 'src/app/store/message/message.reducers';
+import { MessageState } from 'src/app/store/message/message.reducers';
 import { Store } from '@ngrx/store';
 import {
   GetMessagesAction,
@@ -47,7 +45,7 @@ export class VideoPage implements OnInit, OnDestroy {
   getData() {
     this.subscription.add(
       this.roomService
-        .getUsers()
+        .getCountUsersOnline(this.videoId)
         .subscribe((users: number) => (this.users = users))
     );
   }
@@ -71,7 +69,7 @@ export class VideoPage implements OnInit, OnDestroy {
   }
 
   connect() {
-    this.roomService.connnect();
+    this.roomService.connnect(this.videoId, this.authState.user.username);
     this.openRoom();
     this.getData();
   }
@@ -92,7 +90,8 @@ export class VideoPage implements OnInit, OnDestroy {
 
   fromVideo(video) {
     if (video) {
-      this.store.dispatch(new GetMessagesAction());
+      console.log('formpage',this.videoId)
+      this.store.dispatch(new GetMessagesAction(this.videoId));
       this.connect();
     }
   }

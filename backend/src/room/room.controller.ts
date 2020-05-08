@@ -4,9 +4,9 @@ import {
   Body,
   Post,
   UseGuards,
-  Req,
   UseInterceptors,
   ClassSerializerInterceptor,
+  Param,
 } from '@nestjs/common';
 import { RoomService } from './room.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
@@ -16,9 +16,10 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class RoomController {
   constructor(private roomService: RoomService) {}
 
-  @Get()
-  getMessages() {
-    return this.roomService.findAllMessages();
+  @Get(':video')
+  getMessages(@Param('video') video) {
+    console.log('from controller', video);
+    return this.roomService.findAllMessages(video);
   }
 
   @Post()

@@ -72,8 +72,12 @@ let RoomService = class RoomService {
             throw new common_1.NotFoundException('User Not found');
         }
     }
-    async findAllMessages() {
-        return this.messageRepository.find({ relations: ['user'] });
+    async findAllMessages(video) {
+        let room = await this.roomRepository.findOne({ where: { video: video } });
+        return this.messageRepository.find({
+            where: { room: { id: room.id } },
+            relations: ['user'],
+        });
     }
     findAll() {
         return this.roomRepository.find();

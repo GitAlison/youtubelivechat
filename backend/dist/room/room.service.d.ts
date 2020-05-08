@@ -7,6 +7,6 @@ export declare class RoomService {
     constructor(roomRepository: Repository<RoomEntity>, messageRepository: Repository<MessageEntity>);
     createRoom(video: string): Promise<any>;
     createMessage(data: any): Promise<any>;
-    findAllMessages(): Promise<any[]>;
+    findAllMessages(video: any): Promise<any[]>;
     findAll(): Promise<RoomEntity[]>;
 }

@@ -6,6 +6,7 @@ import {
   BaseEntity,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 import { MessageEntity } from './message.entity';
 
@@ -25,7 +26,8 @@ export class RoomEntity extends BaseEntity {
 
   @OneToMany(
     type => MessageEntity,
-    message => message.room.id,
+    message => message.room,
   )
+  @JoinColumn()
   messages: MessageEntity;
 }
