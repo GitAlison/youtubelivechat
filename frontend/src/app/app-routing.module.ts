@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/video/video.page.module').then((m) => m.VideoPageModule),
   },
+  {
+    path: 'trending',
+    loadChildren: () => import('./pages/trending/trending.module').then( m => m.TrendingPageModule)
+  },
 ];
 
 @NgModule({
