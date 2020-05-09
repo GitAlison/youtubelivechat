@@ -1,4 +1,4 @@
-import { Controller, Get, Res } from '@nestjs/common';
+import { Controller, Get, Res, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 import { Response } from 'express';
@@ -18,8 +18,20 @@ export class AppController {
     });
   }
 
-  @Get('web')
-  web() {
-    return this.appService.getWeb();
+  @Get('trending')
+  trands() {
+    return this.appService.getWeb('https://www.youtube.com/feed/trending');
   }
+  
+  @Get('index')
+  index() {
+    return this.appService.getWeb('https://www.youtube.com');
+  }
+
+  @Get('search/:query')
+  search(@Param('query') query) {
+    console.log(query)
+    return this.appService.getWeb('https://www.youtube.com/results?search_query='+query);
+  }
+
 }

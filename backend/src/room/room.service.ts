@@ -68,11 +68,13 @@ export class RoomService {
 
   async findAllMessages(video): Promise<any[]> {
     let room = await this.roomRepository.findOne({ where: { video: video } });
-
-    return this.messageRepository.find({
-      where: { room: { id: room.id } },
-      relations: ['user'],
-    });
+    if (room) {
+      return this.messageRepository.find({
+        where: { room: { id: room.id } },
+        relations: ['user'],
+      });
+    }
+    throw new NotFoundException('Sala Nao encontrada')
   }
 
   findAll(): Promise<RoomEntity[]> {

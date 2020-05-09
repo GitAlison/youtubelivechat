@@ -10,15 +10,16 @@ export class AppService {
     return 'Hello World!';
   }
 
-  async getWebHTMl() {
+  async getWebHTMl(url) {
+
     return this.http
-      .get('https://www.youtube.com/feed/trending')
+      .get(url)
       .pipe(map(response => response.data))
       .toPromise();
   }
 
-  async getWeb() {
-    let html = await this.getWebHTMl();
+  async getWeb(url) {
+    let html = await this.getWebHTMl(url);
 
     let $ = cheerio.load(html);
     // let body = cheerio($('div.yt-lockup-content'));
@@ -28,25 +29,20 @@ export class AppService {
 
     body.each(function() {
 
-     
-      // const url =  $(this).find('div > div > a').attr('href')
-      // console.log(url)
-
-      // const duracao =  $(this).find('.video-time').text()
-
-
-
       const duracao =  $(this).find('.video-time').text()
       const image =  $(this).find('div > div > a > div > span').children('img').eq(0).attr('src')
       const imageSecond =  $(this).find('.yt-thumb-simple').children('img').eq(0).attr('data-thumb')
       const title =  $(this).find('div > div > h3 > a').text()
+      const videoId = $(this).find('div > div > a').attr('href').split('/watch?v=')[1]
+      console.log(videoId)
 
 
       if(imageSecond == undefined){
         dados.push({
           title:title,
           duration:duracao,
-          image:image
+          image:image,
+          video:videoId
         })
         // console.log(duracao , image)
 
@@ -54,7 +50,8 @@ export class AppService {
         dados.push({
           title:title,
           duration:duracao,
-          image:imageSecond
+          image:imageSecond,
+          video:videoId
         })
         // console.log(duracao , imageSecond)
       }

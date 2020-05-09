@@ -16,9 +16,9 @@ export class TrendingPage implements OnInit {
   }
 
   getTrending() {
-    this.Http.get('http://localhost:3000/web').subscribe((data) => {
+    this.Http.get('http://localhost:3000/trending').subscribe((data) => {
       this.movies = data;
-      console.log(data);
+
     });
   }
 }

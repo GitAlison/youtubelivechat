@@ -17,9 +17,10 @@ import { environment } from 'src/environments/environment';
 import { ModalLoginComponent } from './auth/modals/modal-login/modal-login.component';
 import { ModalRegisterComponent } from './auth/modals/modal-register/modal-register.component';
 import { AuthModule } from './auth/auth.module';
+import { HomePipe } from './pages/home.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomePipe],
   entryComponents: [],
   imports: [
     BrowserModule,

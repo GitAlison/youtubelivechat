@@ -4,8 +4,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'video/Inbox',
+    redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'video/:id',
@@ -15,6 +19,10 @@ const routes: Routes = [
   {
     path: 'trending',
     loadChildren: () => import('./pages/trending/trending.module').then( m => m.TrendingPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'home',
   },
 ];
 

@@ -1314,8 +1314,8 @@
         "signature": "8548a1a83c1091e8c7a355b7edf031854b007d10a7fa24e180a95d608c87704e"
       },
       "../src/app.service.ts": {
-        "version": "fb6060183e4a0ba3acbb5c3685bba34befd32f09fcd49c53331eb187e616fa61",
-        "signature": "e1130400bdcba320403af568376fad12f9df96db6cee273cb7e5726679a33b68"
+        "version": "8b8a6ce751383881bdcea2c1929b21606215b7341c74894f992f53baf45f5c03",
+        "signature": "05633acebebfb3403f80787069dc85abeace127ae8ef160dcf4d3e06c8b1a557"
       },
       "../node_modules/@types/node/globals.d.ts": {
         "version": "9d0b32c595a2e0d320a56b3d0e8f0a317e4149239ec913aa8f11eeb73edc92be",
@@ -2634,8 +2634,8 @@
         "signature": "ead1ed9dd4874f4907a506a31e4fe9c4e079b42816f6b7ea5016a6d5ddf2fde3"
       },
       "../src/app.controller.ts": {
-        "version": "03b7058c1f10e48a3e8c974d7c7d5ccbfe57a027316288312c4b21139bcc27f3",
-        "signature": "1e883a383cc99584319882197f041f376074403f8bbe5a969af171049020c760"
+        "version": "04dca2a3691d905ada5da4289096155ecb7593e533c841192845232660e49d5e",
+        "signature": "74b8766d0f2330ef64c0b02f5743d045107dab9ab864ab1468a5d050b40b95ff"
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
         "version": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
@@ -2834,7 +2834,7 @@
         "signature": "68417c5588ca537022d9930f6e64d621b8357d67957a3a02ebafc7ba8d014c42"
       },
       "../src/room/room.service.ts": {
-        "version": "2396e52fd4e08649560239698786b24e190176590c79efb5855c816104709564",
+        "version": "2bff00afbaabd2678a389172a5ddca41a369c84479ecc4793ec89ba9c88d3552",
         "signature": "a2cd87f8d3789fe591f8383868d3424182428603dabec7294328a321f2d23204"
       },
       "../src/auth/user.interceptor.ts": {
@@ -2842,7 +2842,7 @@
         "signature": "dfdb898cac272b3b1fa540d58bfeff5c519dcf587ec55788b35b35b5b390b086"
       },
       "../src/room/room.gateway.ts": {
-        "version": "3ea28d2b35f20e6f9652ae5c8580b99c3a16e3d8eddede451a2bbf4b86b76586",
+        "version": "ef22c0ae56cb722b996a7e07dacf3b887f55fcea36c785e98b381cb72c4b27a4",
         "signature": "0256f67561610007bbb93f5226fb880fed180342cf63d815affbd9f21ccddbb0"
       },
       "../src/room/room.controller.ts": {
@@ -18390,6 +18390,7 @@
       "../node_modules/rxjs/internal/operators/zip.d.ts",
       "../node_modules/rxjs/internal/operators/zipall.d.ts",
       "../node_modules/rxjs/operators/index.d.ts",
+      "../src/app.service.ts",
       "../node_modules/@types/node/globals.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
       "../node_modules/@types/node/buffer.d.ts",
@@ -18719,7 +18720,6 @@
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/qs/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
-      "../src/app.controller.ts",
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts",
       "../node_modules/@nestjs/passport/dist/interfaces/auth-module.options.d.ts",
       "../node_modules/@nestjs/passport/dist/interfaces/type.interface.d.ts",
@@ -18862,7 +18862,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/app.service.ts"
+      "../src/app.controller.ts"
     ]
   },
   "version": "3.8.3"

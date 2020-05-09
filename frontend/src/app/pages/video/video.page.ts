@@ -69,7 +69,12 @@ export class VideoPage implements OnInit, OnDestroy {
   }
 
   connect() {
-    this.roomService.connnect(this.videoId, this.authState.user.username);
+    try {
+      this.roomService.connnect(this.videoId, this.authState.user.username);
+    } catch (error) {
+      this.roomService.connnect(this.videoId);
+    }
+
     this.openRoom();
     this.getData();
   }
@@ -90,7 +95,6 @@ export class VideoPage implements OnInit, OnDestroy {
 
   fromVideo(video) {
     if (video) {
-      console.log('formpage',this.videoId)
       this.store.dispatch(new GetMessagesAction(this.videoId));
       this.connect();
     }

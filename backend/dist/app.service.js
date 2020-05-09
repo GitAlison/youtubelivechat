@@ -19,14 +19,14 @@ let AppService = class AppService {
     getHello() {
         return 'Hello World!';
     }
-    async getWebHTMl() {
+    async getWebHTMl(url) {
         return this.http
-            .get('https://www.youtube.com/feed/trending')
+            .get(url)
             .pipe(operators_1.map(response => response.data))
             .toPromise();
     }
-    async getWeb() {
-        let html = await this.getWebHTMl();
+    async getWeb(url) {
+        let html = await this.getWebHTMl(url);
         let $ = cheerio.load(html);
         let body = cheerio($('div.yt-lockup-dismissable'));
         let dados = [];
@@ -35,18 +35,22 @@ let AppService = class AppService {
             const image = $(this).find('div > div > a > div > span').children('img').eq(0).attr('src');
             const imageSecond = $(this).find('.yt-thumb-simple').children('img').eq(0).attr('data-thumb');
             const title = $(this).find('div > div > h3 > a').text();
+            const videoId = $(this).find('div > div > a').attr('href').split('/watch?v=')[1];
+            console.log(videoId);
             if (imageSecond == undefined) {
                 dados.push({
                     title: title,
                     duration: duracao,
-                    image: image
+                    image: image,
+                    video: videoId
                 });
             }
             else {
                 dados.push({
                     title: title,
                     duration: duracao,
-                    image: imageSecond
+                    image: imageSecond,
+                    video: videoId
                 });
             }
             console.log('----');

@@ -74,10 +74,13 @@ let RoomService = class RoomService {
     }
     async findAllMessages(video) {
         let room = await this.roomRepository.findOne({ where: { video: video } });
-        return this.messageRepository.find({
-            where: { room: { id: room.id } },
-            relations: ['user'],
-        });
+        if (room) {
+            return this.messageRepository.find({
+                where: { room: { id: room.id } },
+                relations: ['user'],
+            });
+        }
+        throw new common_1.NotFoundException('Sala Nao encontrada');
     }
     findAll() {
         return this.roomRepository.find();

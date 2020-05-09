@@ -29,8 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public selectedIndex = 0;
   public appPages = [
     {
-      title: 'YouTube',
-      url: '/video/XkeIwhKIi84',
+      title: 'Inicio',
+      url: '/home',
       icon: 'videocam',
     },
     {
@@ -38,21 +38,21 @@ export class AppComponent implements OnInit, OnDestroy {
       url: '/trending',
       icon: 'videocam',
     },
-    {
-      title: 'YouTube Red Hot',
-      url: '/video/BfOdWSiyWoc',
-      icon: 'videocam',
-    },
-    {
-      title: 'Inbox',
-      url: '/video/2',
-      icon: 'mail',
-    },
-    {
-      title: 'Historico',
-      url: '/video/3',
-      icon: 'heart',
-    },
+    // {
+    //   title: 'YouTube Red Hot',
+    //   url: '/video/BfOdWSiyWoc',
+    //   icon: 'videocam',
+    // },
+    // {
+    //   title: 'Inbox',
+    //   url: '/video/2',
+    //   icon: 'mail',
+    // },
+    // {
+    //   title: 'Historico',
+    //   url: '/video/3',
+    //   icon: 'heart',
+    // },
   ];
 
   constructor(

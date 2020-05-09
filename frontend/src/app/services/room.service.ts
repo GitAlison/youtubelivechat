@@ -25,18 +25,18 @@ export class RoomService {
     // });
   }
 
-  connnect(video, username) {
+  connnect(video, username?) {
     this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
     this.socketClient.ioSocket.io.opts.query = {
       video: video,
       user: username,
     };
     this.socketClient.connect();
-    console.log('connect');
+
   }
 
   disconnect() {
-    console.log('disconecting');
+
     this.socketClient.disconnect();
   }
 
@@ -57,7 +57,7 @@ export class RoomService {
     return this.socketClient.fromEvent(`room${video}`);
   }
   getMessages(video: string) {
-    console.log(video)
+
     return this.http.get<Message[]>(`${this.api}/${video}`);
   }
 

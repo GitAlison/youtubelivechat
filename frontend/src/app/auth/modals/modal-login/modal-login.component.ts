@@ -35,7 +35,7 @@ export class ModalLoginComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+
       this.subscriptions.add(
         this.authsService.login(this.form.value).subscribe(
           (data) => {
@@ -43,7 +43,7 @@ export class ModalLoginComponent implements OnInit, OnDestroy {
             this.store.dispatch(new AuthenticateSuccess(data));
           },
           (error) => {
-            console.log(error);
+
             this.presentToastErro();
           }
         )

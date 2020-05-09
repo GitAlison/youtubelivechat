@@ -3,6 +3,6 @@ export declare class AppService {
     private readonly http;
     constructor(http: HttpService);
     getHello(): string;
-    getWebHTMl(): Promise<any>;
-    getWeb(): Promise<any[]>;
+    getWebHTMl(url: any): Promise<any>;
+    getWeb(url: any): Promise<any[]>;
 }

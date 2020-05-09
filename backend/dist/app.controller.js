@@ -26,8 +26,15 @@ let AppController = class AppController {
             root: path_1.join(__dirname, '..', '..', 'frontend', 'www'),
         });
     }
-    web() {
-        return this.appService.getWeb();
+    trands() {
+        return this.appService.getWeb('https://www.youtube.com/feed/trending');
+    }
+    index() {
+        return this.appService.getWeb('https://www.youtube.com');
+    }
+    search(query) {
+        console.log(query);
+        return this.appService.getWeb('https://www.youtube.com/results?search_query=' + query);
     }
 };
 __decorate([
@@ -38,11 +45,24 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "get", null);
 __decorate([
-    common_1.Get('web'),
+    common_1.Get('trending'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], AppController.prototype, "web", null);
+], AppController.prototype, "trands", null);
+__decorate([
+    common_1.Get('index'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "index", null);
+__decorate([
+    common_1.Get('search/:query'),
+    __param(0, common_1.Param('query')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "search", null);
 AppController = __decorate([
     common_1.Controller(),
     __metadata("design:paramtypes", [auth_service_1.AuthService,

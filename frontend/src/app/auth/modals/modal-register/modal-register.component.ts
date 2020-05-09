@@ -47,7 +47,7 @@ export class ModalRegisterComponent implements OnInit, OnDestroy {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log(this.form.value);
+
       this.subscriptions.add(
         this.authsService.register(this.form.value).subscribe(
           (data) => {
