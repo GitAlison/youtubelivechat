@@ -34,25 +34,19 @@ export class AppComponent implements OnInit, OnDestroy {
       icon: 'videocam',
     },
     {
+      title: 'Buscar Video',
+      url: '/video/XkeIwhKIi84',
+      icon: 'videocam',
+    },
+    {
       title: 'YouTube Red Hot',
       url: '/video/BfOdWSiyWoc',
       icon: 'videocam',
     },
     {
-      title: 'Sala',
-      url: '/video/1',
-      icon: 'mail',
-    },
-    {
       title: 'Inbox',
       url: '/video/2',
       icon: 'mail',
-    },
-
-    {
-      title: 'Favorites',
-      url: '/video/Favorites',
-      icon: 'heart',
     },
     {
       title: 'Historico',

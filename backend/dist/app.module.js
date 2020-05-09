@@ -13,11 +13,21 @@ const auth_module_1 = require("./auth/auth.module");
 const room_module_1 = require("./room/room.module");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_module_1 = require("./user/user.module");
+const serve_static_1 = require("@nestjs/serve-static");
+const path_1 = require("path");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [auth_module_1.AuthModule, room_module_1.RoomModule, typeorm_1.TypeOrmModule.forRoot({}), user_module_1.UserModule],
+        imports: [
+            auth_module_1.AuthModule,
+            room_module_1.RoomModule,
+            serve_static_1.ServeStaticModule.forRoot({
+                rootPath: path_1.join(__dirname, '..', '..', 'frontend', 'www'),
+            }),
+            typeorm_1.TypeOrmModule.forRoot({}),
+            user_module_1.UserModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
