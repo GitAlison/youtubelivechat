@@ -9,6 +9,22 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of movies">
+      <ion-thumbnail slot="start">
+        <img [src]="item?.image">
+      </ion-thumbnail>
+      <ion-label>
+        <h1>{{item?.title}}</h1>
+        <p> {{item?.duration}}</p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+
+
   <ion-button (click)="getTrending()">
     <ion-icon slot="icon-only" name="add"></ion-icon>
   </ion-button>

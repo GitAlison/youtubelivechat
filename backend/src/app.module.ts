@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -12,6 +12,7 @@ import { join } from 'path';
   imports: [
     AuthModule,
     RoomModule,
+    HttpModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', 'frontend', 'www'),
     }),

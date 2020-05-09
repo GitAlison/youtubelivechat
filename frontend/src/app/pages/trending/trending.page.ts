@@ -9,10 +9,15 @@ import { HttpClient } from '@angular/common/http';
 export class TrendingPage implements OnInit {
   constructor(private Http: HttpClient) {}
 
-  ngOnInit() {}
+  movies: any;
+
+  ngOnInit() {
+    this.getTrending()
+  }
 
   getTrending() {
-    this.Http.get('https://www.youtube.com/feed/trending').subscribe((data) => {
+    this.Http.get('http://localhost:3000/web').subscribe((data) => {
+      this.movies = data;
       console.log(data);
     });
   }

@@ -22,6 +22,7 @@ AppModule = __decorate([
         imports: [
             auth_module_1.AuthModule,
             room_module_1.RoomModule,
+            common_1.HttpModule,
             serve_static_1.ServeStaticModule.forRoot({
                 rootPath: path_1.join(__dirname, '..', '..', 'frontend', 'www'),
             }),

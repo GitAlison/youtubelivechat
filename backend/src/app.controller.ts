@@ -1,16 +1,6 @@
-import {
-  Controller,
-  Get,
-  UseGuards,
-  Post,
-  Request,
-  Body,
-  Res,
-} from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { Response } from 'express';
 import { join } from 'path';
 
@@ -26,5 +16,10 @@ export class AppController {
     res.sendFile('index.html', {
       root: join(__dirname, '..', '..', 'frontend', 'www'),
     });
+  }
+
+  @Get('web')
+  web() {
+    return this.appService.getWeb();
   }
 }

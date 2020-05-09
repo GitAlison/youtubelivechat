@@ -6,4 +6,5 @@ export declare class AppController {
     private readonly appService;
     constructor(authService: AuthService, appService: AppService);
     get(res: Response): void;
+    web(): Promise<any[]>;
 }

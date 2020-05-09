@@ -26,6 +26,9 @@ let AppController = class AppController {
             root: path_1.join(__dirname, '..', '..', 'frontend', 'www'),
         });
     }
+    web() {
+        return this.appService.getWeb();
+    }
 };
 __decorate([
     common_1.Get(),
@@ -34,6 +37,12 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "get", null);
+__decorate([
+    common_1.Get('web'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "web", null);
 AppController = __decorate([
     common_1.Controller(),
     __metadata("design:paramtypes", [auth_service_1.AuthService,
