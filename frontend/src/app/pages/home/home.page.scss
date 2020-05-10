@@ -26,3 +26,41 @@ ion-item:hover {
     margin-left: 10px;
   }
 }
+
+@media (max-width: 600px) {
+  ion-thumbnail {
+    width: 96px;
+    height: 55px;
+    transition-duration: 400ms;
+
+    img {
+      width: 96px;
+      height: 55px;
+    }
+  }
+  ion-item {
+    ion-label {
+      h1 {
+        font-size: 13px !important;
+      }
+      p {
+        font-size: 9px !important;
+      }
+    }
+  }
+  ion-item:hover {
+    ion-thumbnail {
+      width: 100px;
+      height: 57px;
+      transform: scale(1.2);
+
+      img {
+        width: 100px;
+        height: 57px;
+      }
+    }
+    ion-label {
+      margin-left: 5px;
+    }
+  }
+}

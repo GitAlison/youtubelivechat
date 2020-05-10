@@ -48,7 +48,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "get", null);
 __decorate([
-    common_1.Get('trending'),
+    common_1.Get('trend'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
