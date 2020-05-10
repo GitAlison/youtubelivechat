@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class RoomService {
   socket;
   // api = 'http://127.0.0.1:3000/room';
-  api = environment+'room';
+  api = environment.base_api + 'room';
   // authState: Observable<AuthState>;
   token: Token;
   constructor(
@@ -28,7 +28,7 @@ export class RoomService {
   }
 
   connnect(video, username?) {
-    this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
+    this.socketClient.ioSocket.io.uri = environment.base_api;
     this.socketClient.ioSocket.io.opts.query = {
       video: video,
       user: username,
