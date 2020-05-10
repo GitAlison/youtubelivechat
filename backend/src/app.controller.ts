@@ -18,7 +18,7 @@ export class AppController {
     });
   }
 
-  @Get('trending')
+  @Get('trend')
   trands() {
     return this.appService.getWeb('https://www.youtube.com/feed/trending');
   }

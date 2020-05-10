@@ -19,6 +19,6 @@ export class MovieService {
   }
 
   getTrending() {
-    return this.http.get<Video[]>(`${this.baseApi}trending`);
+    return this.http.get<Video[]>(`${this.baseApi}trend`);
   }
 }
