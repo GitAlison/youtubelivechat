@@ -6,13 +6,15 @@ import { Message } from '../store/models/message.model';
 import { AuthState } from '../auth/store/auth/auth.reducer';
 import { Store } from '@ngrx/store';
 import { Token } from '../auth/store/auth/user.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoomService {
   socket;
-  api = 'http://127.0.0.1:3000/room';
+  // api = 'http://127.0.0.1:3000/room';
+  api = environment+'room';
   // authState: Observable<AuthState>;
   token: Token;
   constructor(
@@ -26,7 +28,7 @@ export class RoomService {
   }
 
   connnect(video, username?) {
-    this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
+    this.socketClient.ioSocket.io.uri = environment;
     this.socketClient.ioSocket.io.opts.query = {
       video: video,
       user: username,
@@ -57,7 +59,6 @@ export class RoomService {
     return this.socketClient.fromEvent(`room${video}`);
   }
   getMessages(video: string) {
-
     return this.http.get<Message[]>(`${this.api}/${video}`);
   }
 
