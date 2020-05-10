@@ -115,4 +115,13 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
+
+
+  openInstagram(){
+    window.open('https://www.instagram.com/alison_aguiarof/', "_blank");
+  }
+  openGitHub(){
+    window.open('https://github.com/gitalison', "_blank");
+
+  }
 }

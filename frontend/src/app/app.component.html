@@ -1,5 +1,8 @@
 <ion-app>
   <ion-menu side="start" contentId="main-content" type="overlay">
+    <ion-header class="ion-padding">
+      <img src="../assets/logo.png" alt="GitHub">
+    </ion-header>
     <ion-content>
       <ion-list id="inbox-list">
         <ng-container *ngIf="authState$|async as stateAuth;">
@@ -41,6 +44,28 @@
         </ng-container>
       </ion-list>
     </ion-content>
+    <ion-footer>
+      <ion-toolbar>
+        <ion-title size="small" >
+          Dev: Alison Aguiar
+        </ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="openGitHub()">
+            <img width="30px" src="../assets/icon/logo-github.svg" alt="GitHub">
+          </ion-button>
+
+          <ion-button (click)="openInstagram()" >
+            <img width="30px" src="../assets/icon/logo-instagram.svg" alt="Instagram">
+          </ion-button>
+
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button>
+
+        </ion-button>
+      </ion-buttons>
+    </ion-footer>
   </ion-menu>
   <ion-split-pane contentId="main-content">
     <ion-router-outlet id="main-content"></ion-router-outlet>
