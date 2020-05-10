@@ -28,7 +28,7 @@ export class RoomService {
   }
 
   connnect(video, username?) {
-    this.socketClient.ioSocket.io.uri = environment;
+    this.socketClient.ioSocket.io.uri = 'http://localhost:3000/';
     this.socketClient.ioSocket.io.opts.query = {
       video: video,
       user: username,
@@ -59,6 +59,7 @@ export class RoomService {
     return this.socketClient.fromEvent(`room${video}`);
   }
   getMessages(video: string) {
+
     return this.http.get<Message[]>(`${this.api}/${video}`);
   }
 
