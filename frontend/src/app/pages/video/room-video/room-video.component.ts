@@ -63,8 +63,7 @@ export class RoomVideoComponent implements OnInit {
     } else {
       this.show_player = true;
       this.statusVideo.emit(true);
-
-      // this.player.playVideo();
+      this.player.playVideo();
     }
   }
   onStateChange(event) {}
