@@ -17,10 +17,15 @@ import { environment } from 'src/environments/environment';
 import { ModalLoginComponent } from './auth/modals/modal-login/modal-login.component';
 import { ModalRegisterComponent } from './auth/modals/modal-register/modal-register.component';
 import { AuthModule } from './auth/auth.module';
-import { HomePipe } from './pages/home.pipe';
+import { homeReducer } from './store/home/home.reducer';
+import { HomeEffect } from './store/home/home.effects';
+import { SearchEffect } from './store/search/search.effects';
+import { searchReducer } from './store/search/search.reducer';
+import { trendingReducer } from './store/trending/trending.reducer';
+import { TrendingEffect } from './store/trending/trending.effects';
 
 @NgModule({
-  declarations: [AppComponent, HomePipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
@@ -29,8 +34,12 @@ import { HomePipe } from './pages/home.pipe';
     ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({
+      home: homeReducer,
+      search: searchReducer,
+      trending: trendingReducer,
+    }),
+    EffectsModule.forRoot([HomeEffect, SearchEffect, TrendingEffect]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

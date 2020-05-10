@@ -1314,7 +1314,7 @@
         "signature": "8548a1a83c1091e8c7a355b7edf031854b007d10a7fa24e180a95d608c87704e"
       },
       "../src/app.service.ts": {
-        "version": "8b8a6ce751383881bdcea2c1929b21606215b7341c74894f992f53baf45f5c03",
+        "version": "a3bbbd97d14464c7b57a0b1a0809e43704d45e22a72e641bb0d6ddbc8e529fea",
         "signature": "05633acebebfb3403f80787069dc85abeace127ae8ef160dcf4d3e06c8b1a557"
       },
       "../node_modules/@types/node/globals.d.ts": {
@@ -2598,7 +2598,7 @@
         "signature": "872677ea065f79f22b7457a08238ea4195a519d93acf299a0628c178846005d0"
       },
       "../src/auth/auth.service.ts": {
-        "version": "8788afab5dd5f8fb2d83c48383f832a09f4d53a1ae7ba707bb8430f1842afb59",
+        "version": "9b668a1cba4542f97d85405bc76b0bc85ef9e4cb655ec8436ff759e6707357b1",
         "signature": "56072a8bc47e2cd04410ae65b9a2be61c28ebad7a09fa5af0d2e904f9f5ba8aa"
       },
       "../node_modules/@types/range-parser/index.d.ts": {
@@ -2834,7 +2834,7 @@
         "signature": "68417c5588ca537022d9930f6e64d621b8357d67957a3a02ebafc7ba8d014c42"
       },
       "../src/room/room.service.ts": {
-        "version": "2bff00afbaabd2678a389172a5ddca41a369c84479ecc4793ec89ba9c88d3552",
+        "version": "6645273b4ec2fd86643e89a6591c7e4460e9c42b716f4c2e8c7b2d444abfa652",
         "signature": "a2cd87f8d3789fe591f8383868d3424182428603dabec7294328a321f2d23204"
       },
       "../src/auth/user.interceptor.ts": {
@@ -2842,11 +2842,11 @@
         "signature": "dfdb898cac272b3b1fa540d58bfeff5c519dcf587ec55788b35b35b5b390b086"
       },
       "../src/room/room.gateway.ts": {
-        "version": "ef22c0ae56cb722b996a7e07dacf3b887f55fcea36c785e98b381cb72c4b27a4",
+        "version": "d9fea02fe80c7fd793012f646a6e0a0afccb86ec83281e93434cb4a60c5da0d5",
         "signature": "0256f67561610007bbb93f5226fb880fed180342cf63d815affbd9f21ccddbb0"
       },
       "../src/room/room.controller.ts": {
-        "version": "5365f49ec99ee46abe0f9759113cb27869331f3a7195b8fc1fd72e90174e6c2c",
+        "version": "0964d4d1bcb69a8d37ec1d26348702dbeb4c657fcd49150db8e3eec3f8300b7e",
         "signature": "13dcfc62f5dff7342cd0ff8b7d89956776c5ec65722505a97b6b3ed32382396e"
       },
       "../src/room/room.module.ts": {
@@ -18720,6 +18720,7 @@
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/qs/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../src/app.controller.ts",
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts",
       "../node_modules/@nestjs/passport/dist/interfaces/auth-module.options.d.ts",
       "../node_modules/@nestjs/passport/dist/interfaces/type.interface.d.ts",
@@ -18769,7 +18770,6 @@
       "../node_modules/@nestjs/websockets/index.d.ts",
       "../src/room/message.entity.ts",
       "../src/room/room.entity.ts",
-      "../src/room/room.service.ts",
       "../src/auth/user.interceptor.ts",
       "../src/room/room.gateway.ts",
       "../src/room/room.controller.ts",
@@ -18862,7 +18862,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/app.controller.ts"
+      "../src/room/room.service.ts"
     ]
   },
   "version": "3.8.3"

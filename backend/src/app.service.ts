@@ -25,8 +25,8 @@ export class AppService {
     // let body = cheerio($('div.yt-lockup-content'));
     let body = cheerio($('div.yt-lockup-dismissable'));
 
-    let dados:any[]=[]
-
+    let dados:any[]=[];
+    let index= 0;
     body.each(function() {
 
       const duracao =  $(this).find('.video-time').text()
@@ -36,36 +36,30 @@ export class AppService {
       const videoId = $(this).find('div > div > a').attr('href').split('/watch?v=')[1]
       console.log(videoId)
 
+      index++
+
 
       if(imageSecond == undefined){
         dados.push({
+          id:index,
           title:title,
           duration:duracao,
           image:image,
           video:videoId
         })
-        // console.log(duracao , image)
 
       }else{
         dados.push({
+          id:index,
           title:title,
           duration:duracao,
           image:imageSecond,
           video:videoId
         })
-        // console.log(duracao , imageSecond)
       }
-
-      // console.log(duracao , image)
-
-
-
-
-      console.log('----');
-      
     });
 
-    console.log('fim');
+
     return dados;
   }
 }

@@ -18,7 +18,6 @@ export class RoomController {
 
   @Get(':video')
   getMessages(@Param('video') video) {
-    console.log('from controller', video);
     return this.roomService.findAllMessages(video);
   }
 

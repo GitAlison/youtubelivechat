@@ -15,7 +15,6 @@ export class RoomService {
   ) {}
 
   async createRoom(video: string): Promise<any> {
-    console.log(video);
     let room = await this.roomRepository.findOne({ where: { video } });
     if (room) {
       return room;
@@ -61,8 +60,7 @@ export class RoomService {
       };
       return objectResponse;
     } catch (error) {
-      console.log(error);
-      throw new NotFoundException('User Not found');
+      throw new NotFoundException('Usuario não encontrado');
     }
   }
 
@@ -73,8 +71,13 @@ export class RoomService {
         where: { room: { id: room.id } },
         relations: ['user'],
       });
+    } else {
+      const room = await this.roomRepository.create({ video }).save();
+      return this.messageRepository.find({
+        where: { room: { id: room.id } },
+        relations: ['user'],
+      });
     }
-    throw new NotFoundException('Sala Nao encontrada')
   }
 
   findAll(): Promise<RoomEntity[]> {

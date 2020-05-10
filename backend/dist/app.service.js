@@ -30,6 +30,7 @@ let AppService = class AppService {
         let $ = cheerio.load(html);
         let body = cheerio($('div.yt-lockup-dismissable'));
         let dados = [];
+        let index = 0;
         body.each(function () {
             const duracao = $(this).find('.video-time').text();
             const image = $(this).find('div > div > a > div > span').children('img').eq(0).attr('src');
@@ -37,8 +38,10 @@ let AppService = class AppService {
             const title = $(this).find('div > div > h3 > a').text();
             const videoId = $(this).find('div > div > a').attr('href').split('/watch?v=')[1];
             console.log(videoId);
+            index++;
             if (imageSecond == undefined) {
                 dados.push({
+                    id: index,
                     title: title,
                     duration: duracao,
                     image: image,
@@ -47,15 +50,14 @@ let AppService = class AppService {
             }
             else {
                 dados.push({
+                    id: index,
                     title: title,
                     duration: duracao,
                     image: imageSecond,
                     video: videoId
                 });
             }
-            console.log('----');
         });
-        console.log('fim');
         return dados;
     }
 };

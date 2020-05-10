@@ -9,15 +9,43 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <ion-item [routerLink]="'/video/'+item?.video" *ngFor="let item of movies">
-      <ion-thumbnail slot="start">
-        <img [src]="item?.image">
-      </ion-thumbnail>
+  <!-- List Results -->
+  <ng-container *ngIf="loading$|async;else listVideos">
+    <ion-item *ngFor="let item of [1,2,3,5,6,7]">
+      <ion-skeleton-text animated style="width: 196px;
+        height: 110px;" slot="start"></ion-skeleton-text>
       <ion-label>
-        <h1>{{item?.title}}</h1>
-        <p> {{item?.duration}}</p>
+        <h1>
+          <ion-skeleton-text animated style="width: 70%;height: 25px;"></ion-skeleton-text>
+        </h1>
+
+        <p>
+          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+        </p>
       </ion-label>
     </ion-item>
-  </ion-list>
+  </ng-container>
+
+  <ng-template #listVideos>
+    <ng-container *ngIf="videos$|async as videos">
+      <ion-list *ngIf="videos?.length>0">
+        <ion-item [routerLink]="'/video/'+item?.video" *ngFor="let item of videos">
+          <ion-thumbnail slot="start">
+            <img [src]="item?.image">
+          </ion-thumbnail>
+          <ion-label>
+            <h1>{{item?.title}}</h1>
+            <p> Duração: {{item?.duration}}</p>
+          </ion-label>
+        </ion-item>
+        <ion-item-divider>
+          <ion-label></ion-label>
+        </ion-item-divider>
+      </ion-list>
+
+    </ng-container>
+
+  </ng-template>
+  <!-- End List Results -->
+
 </ion-content>

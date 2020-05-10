@@ -1,12 +1,22 @@
 ion-thumbnail {
   width: 196px;
   height: 110px;
-
+  animation-duration: 300ms;
+  transition-duration: 400ms;
   img {
     width: 196px;
     height: 110px;
   }
 }
-a{
-  text-decoration: none;
+ion-item:hover {
+  ion-thumbnail {
+    width: 196px;
+    height: 110px;
+    transform: scale(1.2);
+
+    img {
+      width: 196px;
+      height: 110px;
+    }
+  }
 }

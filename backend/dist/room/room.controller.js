@@ -20,7 +20,6 @@ let RoomController = class RoomController {
         this.roomService = roomService;
     }
     getMessages(video) {
-        console.log('from controller', video);
         return this.roomService.findAllMessages(video);
     }
     createMessage(body) {

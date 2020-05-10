@@ -26,7 +26,6 @@ let RoomGateWay = class RoomGateWay {
         const user = client.handshake.query.user;
         const video = client.handshake.query.video;
         let newUsers = this.updateChatUsers(video, 'add');
-        console.log(newUsers);
         console.log(this.rooms);
         this.server.emit(`usersRoom${video}`, newUsers);
     }

@@ -21,7 +21,7 @@ export class AuthService {
         where: { username },
       });
       bc.compare(pass, userAuth.password, function(err, result) {
-        console.log(result);
+
       });
       const user = await this.userRepository.findOne({
         where: { username },

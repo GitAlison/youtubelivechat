@@ -24,7 +24,6 @@ let RoomService = class RoomService {
         this.messageRepository = messageRepository;
     }
     async createRoom(video) {
-        console.log(video);
         let room = await this.roomRepository.findOne({ where: { video } });
         if (room) {
             return room;
@@ -68,8 +67,7 @@ let RoomService = class RoomService {
             return objectResponse;
         }
         catch (error) {
-            console.log(error);
-            throw new common_1.NotFoundException('User Not found');
+            throw new common_1.NotFoundException('Usuario não encontrado');
         }
     }
     async findAllMessages(video) {
@@ -80,7 +78,13 @@ let RoomService = class RoomService {
                 relations: ['user'],
             });
         }
-        throw new common_1.NotFoundException('Sala Nao encontrada');
+        else {
+            const room = await this.roomRepository.create({ video }).save();
+            return this.messageRepository.find({
+                where: { room: { id: room.id } },
+                relations: ['user'],
+            });
+        }
     }
     findAll() {
         return this.roomRepository.find();

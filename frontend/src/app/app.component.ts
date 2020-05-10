@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
     {
       title: 'Em Alta',
       url: '/trending',
-      icon: 'videocam',
+      icon: 'flame',
     },
     // {
     //   title: 'YouTube Red Hot',
