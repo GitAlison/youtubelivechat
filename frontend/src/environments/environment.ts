@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_api: 'http://localhost:3000/',
+  base_api: 'https://tubelivechat.herokuapp.com/',
 };
 
 /*
