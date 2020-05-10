@@ -9,4 +9,5 @@ export declare class AppController {
     trands(): Promise<any[]>;
     index(): Promise<any[]>;
     search(query: any): Promise<any[]>;
+    sugestions(video: any): Promise<void>;
 }

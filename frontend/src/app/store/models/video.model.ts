@@ -1,7 +1,9 @@
 export interface Video {
-  id:number,
+  id: number;
   title: string;
   duration: string;
   image: string;
   video: string;
+  views: string;
+  data: string;
 }

@@ -37,7 +37,9 @@ let AppService = class AppService {
             const imageSecond = $(this).find('.yt-thumb-simple').children('img').eq(0).attr('data-thumb');
             const title = $(this).find('div > div > h3 > a').text();
             const videoId = $(this).find('div > div > a').attr('href').split('/watch?v=')[1];
-            console.log(videoId);
+            const views = $(this).find('.yt-lockup-meta-info').children('li').eq(0).text();
+            const data = $(this).find('.yt-lockup-meta-info').children('li').eq(1).text();
+            console.log(views, data);
             index++;
             if (imageSecond == undefined) {
                 dados.push({
@@ -45,7 +47,9 @@ let AppService = class AppService {
                     title: title,
                     duration: duracao,
                     image: image,
-                    video: videoId
+                    video: videoId,
+                    views: views,
+                    data: data
                 });
             }
             else {
@@ -54,11 +58,17 @@ let AppService = class AppService {
                     title: title,
                     duration: duracao,
                     image: imageSecond,
-                    video: videoId
+                    video: videoId,
+                    views: views,
+                    data: data
                 });
             }
         });
         return dados;
+    }
+    async getSugestionsVideo(video) {
+        let html = await this.getWebHTMl(`https://www.youtube.com/embed/${video}`);
+        console.log(html);
     }
 };
 AppService = __decorate([

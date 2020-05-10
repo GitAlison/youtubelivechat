@@ -13,9 +13,12 @@ export class HomeEffect {
     ofType<HomeAction.GetVideosAction>(HomeAction.HomeActionTypes.GET_VIDEOS),
     switchMap(() =>
       this.movieService.getVideosHome().pipe(
-        map(
-          (dataService) => new HomeAction.GetVideosSucccessAction(dataService)
-        ),
+        map((dataService) => {
+          if ((dataService.length == 0)) {
+            this.alertService.showAlert('Por favor, Tente Novamente');
+          }
+          return new HomeAction.GetVideosSucccessAction(dataService);
+        }),
         catchError((error) => {
           this.alertService.showAlert('Algo deu errado, tente novamente');
           return of(new HomeAction.GetVideosFailAction(error));

@@ -15,10 +15,12 @@ export class TrendingEffect {
     ),
     switchMap(() =>
       this.movieService.getTrending().pipe(
-        map(
-          (dataService) =>
-            new TrendingAction.GetTrendingSucccessAction(dataService)
-        ),
+        map((dataService) => {
+          if (dataService.length == 0) {
+            this.alertService.showAlert('Por favor, Tente Novamente');
+          }
+          return new TrendingAction.GetTrendingSucccessAction(dataService);
+        }),
         catchError((error) => {
           this.alertService.showAlert('Algo deu errado, tente novamente');
           return of(new TrendingAction.GetTrendingFailAction(error));

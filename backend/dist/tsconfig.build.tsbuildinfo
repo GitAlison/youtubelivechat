@@ -1314,8 +1314,8 @@
         "signature": "8548a1a83c1091e8c7a355b7edf031854b007d10a7fa24e180a95d608c87704e"
       },
       "../src/app.service.ts": {
-        "version": "a3bbbd97d14464c7b57a0b1a0809e43704d45e22a72e641bb0d6ddbc8e529fea",
-        "signature": "05633acebebfb3403f80787069dc85abeace127ae8ef160dcf4d3e06c8b1a557"
+        "version": "bc6ab6d9a44439ec85dffa3f397e6815ce0494bda51f0e64dbd500436bde92f0",
+        "signature": "a8c4a18745dbd6f37eae34b78c96983f321fbccd97dadbe14ac935e2604018a3"
       },
       "../node_modules/@types/node/globals.d.ts": {
         "version": "9d0b32c595a2e0d320a56b3d0e8f0a317e4149239ec913aa8f11eeb73edc92be",
@@ -2634,8 +2634,8 @@
         "signature": "ead1ed9dd4874f4907a506a31e4fe9c4e079b42816f6b7ea5016a6d5ddf2fde3"
       },
       "../src/app.controller.ts": {
-        "version": "04dca2a3691d905ada5da4289096155ecb7593e533c841192845232660e49d5e",
-        "signature": "74b8766d0f2330ef64c0b02f5743d045107dab9ab864ab1468a5d050b40b95ff"
+        "version": "af7952b4c4e074d3234b6c9b49c0aadacd0215f3a5cf89416679a868cc8e89b6",
+        "signature": "88e2733ef16a114b14af0c281f6892cc85894438eed66b5489140bdc64a52965"
       },
       "../node_modules/@nestjs/passport/dist/abstract.strategy.d.ts": {
         "version": "ba63131c5e91f797736444933af16ffa42f9f8c150d859ec65f568f037a416ea",
@@ -18390,7 +18390,6 @@
       "../node_modules/rxjs/internal/operators/zip.d.ts",
       "../node_modules/rxjs/internal/operators/zipall.d.ts",
       "../node_modules/rxjs/operators/index.d.ts",
-      "../src/app.service.ts",
       "../node_modules/@types/node/globals.d.ts",
       "../node_modules/@types/node/async_hooks.d.ts",
       "../node_modules/@types/node/buffer.d.ts",
@@ -18770,6 +18769,7 @@
       "../node_modules/@nestjs/websockets/index.d.ts",
       "../src/room/message.entity.ts",
       "../src/room/room.entity.ts",
+      "../src/room/room.service.ts",
       "../src/auth/user.interceptor.ts",
       "../src/room/room.gateway.ts",
       "../src/room/room.controller.ts",
@@ -18862,7 +18862,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/room/room.service.ts"
+      "../src/app.service.ts"
     ]
   },
   "version": "3.8.3"

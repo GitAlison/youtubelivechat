@@ -36,6 +36,9 @@ let AppController = class AppController {
         console.log(query);
         return this.appService.getWeb('https://www.youtube.com/results?search_query=' + query);
     }
+    sugestions(video) {
+        return this.appService.getSugestionsVideo(video);
+    }
 };
 __decorate([
     common_1.Get(),
@@ -63,6 +66,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "search", null);
+__decorate([
+    common_1.Get('sugestions/:video'),
+    __param(0, common_1.Param('video')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "sugestions", null);
 AppController = __decorate([
     common_1.Controller(),
     __metadata("design:paramtypes", [auth_service_1.AuthService,

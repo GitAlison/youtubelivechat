@@ -1,12 +1,15 @@
 ion-thumbnail {
   width: 196px;
   height: 110px;
-  animation-duration: 300ms;
   transition-duration: 400ms;
   img {
     width: 196px;
     height: 110px;
   }
+}
+
+ion-label {
+  transition-duration: 400ms;
 }
 ion-item:hover {
   ion-thumbnail {
@@ -18,5 +21,8 @@ ion-item:hover {
       width: 196px;
       height: 110px;
     }
+  }
+  ion-label {
+    margin-left: 10px;
   }
 }

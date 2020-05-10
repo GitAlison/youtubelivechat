@@ -16,10 +16,12 @@ export class SearchEffect {
     switchMap((data) =>
       // Search ACtion param INPUT
       this.movieService.searchVideo(data.query).pipe(
-        map(
-          (dataService) =>
-            new SearchAction.SearchVideosSucccessAction(dataService)
-        ),
+        map((dataService) => {
+          if ((dataService.length == 0)) {
+            this.alertService.showAlert('Por favor, Tente Novamente');
+          }
+          return new SearchAction.SearchVideosSucccessAction(dataService);
+        }),
         catchError((error) => {
           this.alertService.showAlert('Algo deu errado, tente novamente');
           return of(new SearchAction.SearchVideosFailAction(error));

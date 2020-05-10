@@ -5,4 +5,5 @@ export declare class AppService {
     getHello(): string;
     getWebHTMl(url: any): Promise<any>;
     getWeb(url: any): Promise<any[]>;
+    getSugestionsVideo(video: any): Promise<void>;
 }

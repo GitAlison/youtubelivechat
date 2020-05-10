@@ -34,4 +34,9 @@ export class AppController {
     return this.appService.getWeb('https://www.youtube.com/results?search_query='+query);
   }
 
+  @Get('sugestions/:video')
+  sugestions(@Param('video') video){
+    return this.appService.getSugestionsVideo(video)
+  }
+
 }
