@@ -20,6 +20,11 @@
         </ion-menu-toggle>
 
 
+       
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-toolbar>
         <ng-container *ngIf="authState$|async as authState">
           <ion-menu-toggle *ngIf="authState?.logged" auto-hide="false">
             <ion-item button (click)="logout()" lines="none" detail="false">
@@ -30,7 +35,7 @@
 
           <ion-menu-toggle *ngIf="!authState?.logged" auto-hide=" false">
             <ion-item button (click)="presentModalLogin()" lines="none" detail="false">
-              <ion-icon slot="start" name="log-int-outline"></ion-icon>
+              <ion-icon slot="start" name="log-in-outline"></ion-icon>
               <ion-label>Entrar</ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -42,9 +47,10 @@
             </ion-item>
           </ion-menu-toggle>
         </ng-container>
-      </ion-list>
-    </ion-content>
-    <ion-footer>
+
+
+        
+      </ion-toolbar>
       <ion-toolbar>
         <ion-title size="small" >
           Dev: Alison Aguiar
@@ -60,11 +66,6 @@
 
         </ion-buttons>
       </ion-toolbar>
-      <ion-buttons slot="end">
-        <ion-button>
-
-        </ion-button>
-      </ion-buttons>
     </ion-footer>
   </ion-menu>
   <ion-split-pane contentId="main-content">

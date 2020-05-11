@@ -19,7 +19,7 @@ import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
 @Component({
   selector: 'app-chat-messages',
   templateUrl: './chat-messages.component.html',
-  styleUrls: ['./chat-messages.component.css'],
+  styleUrls: ['./chat-messages.component.scss'],
 })
 export class ChatMessagesComponent implements OnInit, OnDestroy {
   messages: Message[];
@@ -45,6 +45,7 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
       this.roomService
         .messageReceived(this.video)
         .subscribe((data: Message) => {
+          this.playMessageAudio();
           this.store.dispatch(new AddMessageAction(data));
         })
     );
@@ -58,5 +59,12 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subcription.unsubscribe();
     this.store.dispatch(new RemoveMessagesAction());
+  }
+
+  playMessageAudio() {
+    let message = new Audio();
+    message.src = 'assets/sounds/receive_message.mp3';
+    message.load();
+    message.play();
   }
 }

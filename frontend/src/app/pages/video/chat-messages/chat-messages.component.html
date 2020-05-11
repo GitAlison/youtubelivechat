@@ -1,5 +1,4 @@
 <ion-content [scrollEvents]="true" #chat>
-
   <ng-container *ngIf="loading$|async;else messagesTemplate">
     <ion-item *ngFor="let item of [1,2,3,4,5,6]">
       <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>
@@ -27,9 +26,11 @@
         </ion-avatar>
 
         <ion-label class="ion-text-wrap">
-          <h5><b>{{message?.user?.username}}</b></h5>
+          <div class="username">
+            <h2><b>{{message?.user?.username}}</b> </h2>
+            <h5 class="hour">{{message?.created|date:'H:mm:ss'}}</h5>
+          </div>
           <p>{{message?.text}}</p>
-          <p>as: {{message?.created|date:'H:ss'}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
