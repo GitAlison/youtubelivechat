@@ -171,3 +171,28 @@ ion-split-pane {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   background-color: #aa66cc;
 }
+
+
+
+.message {
+  padding: 16px;
+  position: fixed;
+  opacity: 0;
+  bottom: 60px;
+  right: 0px;
+  z-index: 11;
+  .count {
+    position: relative;
+    bottom: 6px;
+    left: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    z-index: 3;
+  }
+  ion-item {
+    width: auto;
+    border-radius: 10px;
+    --background: rgba(0, 0, 0, 0.205);
+  }
+}

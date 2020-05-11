@@ -1,4 +1,8 @@
 <ion-content [scrollEvents]="true" #chat>
+
+
+  
+
   <ng-container *ngIf="loading$|async;else messagesTemplate">
     <ion-item *ngFor="let item of [1,2,3,4,5,6]">
       <ion-skeleton-text animated style="width: 27px; height: 27px" slot="start"></ion-skeleton-text>

@@ -14,8 +14,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { ModalLoginComponent } from './auth/modals/modal-login/modal-login.component';
-import { ModalRegisterComponent } from './auth/modals/modal-register/modal-register.component';
 import { AuthModule } from './auth/auth.module';
 import { homeReducer } from './store/home/home.reducer';
 import { HomeEffect } from './store/home/home.effects';
@@ -23,12 +21,15 @@ import { SearchEffect } from './store/search/search.effects';
 import { searchReducer } from './store/search/search.reducer';
 import { trendingReducer } from './store/trending/trending.reducer';
 import { TrendingEffect } from './store/trending/trending.effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, // required @angular/animations module
     AuthModule,
     HttpClientModule,
     ReactiveFormsModule,

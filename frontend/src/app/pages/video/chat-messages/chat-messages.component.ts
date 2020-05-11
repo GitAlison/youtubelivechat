@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, OnDestroy, Input } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import {
   MessageState,
   selectAllMessages,
@@ -13,8 +13,14 @@ import {
   AddMessageAction,
   RemoveMessagesAction,
 } from 'src/app/store/message/message.actions';
-import { User } from 'src/app/auth/store/auth/user.model';
-import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
+import {
+  trigger,
+  style,
+  animate,
+  transition,
+  stagger,
+  query,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-chat-messages',
@@ -22,6 +28,7 @@ import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
   styleUrls: ['./chat-messages.component.scss'],
 })
 export class ChatMessagesComponent implements OnInit, OnDestroy {
+
   messages: Message[];
   loading$: Observable<boolean>;
   subcription: Subscription = new Subscription();

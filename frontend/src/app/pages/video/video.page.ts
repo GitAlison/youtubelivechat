@@ -8,13 +8,78 @@ import {
   AddMessageAction,
 } from 'src/app/store/message/message.actions';
 import { Subscription } from 'rxjs';
-import { MenuController } from '@ionic/angular';
+import { MenuController, IonSplitPane } from '@ionic/angular';
 import { AuthState, getAuthState } from 'src/app/auth/store/auth/auth.reducer';
+import {
+  trigger,
+  style,
+  animate,
+  transition,
+  stagger,
+  query,
+} from '@angular/animations';
+import { Message } from 'src/app/store/models/message.model';
 
 @Component({
   selector: 'app-video-page',
   templateUrl: './video.page.html',
   styleUrls: ['./video.page.scss'],
+  animations: [
+    trigger('animation', [
+      transition('* <=> *', [
+        query(
+          ':enter',
+          [
+            style({ opacity: 0 }),
+            stagger(
+              '60ms',
+              animate(
+                '200ms ease-out',
+                style({
+                  opacity: 1,
+                  transform: 'scale(1.8)',
+                })
+              )
+            ),
+            stagger(
+              '60ms',
+              animate(
+                '500ms ease-out',
+                style({
+                  opacity: 1,
+                  transform: 'translateY(-40px)',
+                })
+              )
+            ),
+            stagger(
+              '60ms',
+              animate(
+                '10s ease',
+                style({
+                  opacity: 0.3,
+                  transform: 'translateY(-1000px)',
+                })
+              )
+            ),
+            // stagger(
+            //   '60ms',
+            //   animate(
+            //     '.4s ease',
+            //     style({
+            //       opacity: 0.3,
+            //       transform: 'scale(-10,-10)',
+            //     })
+            //   )
+            // ),
+          ],
+          { optional: true }
+        ),
+        query(':leave', animate('200ms', style({ opacity: 0 })), {
+          optional: true,
+        }),
+      ]),
+    ]),
+  ],
 })
 export class VideoPage implements OnInit, OnDestroy {
   videoId = '';
@@ -24,12 +89,24 @@ export class VideoPage implements OnInit, OnDestroy {
   authState: AuthState;
   subscription: Subscription = new Subscription();
 
+  // Animation Variables
+  showAnimatedMessage = true;
+  animationsStyle: any = [
+    'primary',
+    'secondary',
+    'tertiary',
+    'danger',
+    'warning',
+  ];
+
+  animationsListMessage = [];
   constructor(
     private menu: MenuController,
     private roomService: RoomService,
     private activatedRoute: ActivatedRoute,
     private store: Store<MessageState>,
-    private storeAuth: Store<AuthState>
+    private storeAuth: Store<AuthState>,
+    private split: IonSplitPane
   ) {
     this.videoId = this.activatedRoute.snapshot.paramMap.get('id');
   }
@@ -39,6 +116,14 @@ export class VideoPage implements OnInit, OnDestroy {
       this.storeAuth
         .select(getAuthState)
         .subscribe((data) => (this.authState = data))
+    );
+
+    this.subscription.add(
+      this.roomService
+        .messageReceived(this.videoId)
+        .subscribe((data: Message) => {
+          this.animateMessage(data);
+        })
     );
   }
 
@@ -89,6 +174,21 @@ export class VideoPage implements OnInit, OnDestroy {
     this.roomService.openRoom(this.videoId);
   }
 
+  chatOpen() {
+    this.showAnimatedMessage = false;
+  }
+
+  chatClose() {
+    this.showAnimatedMessage = true;
+  }
+  slipePane(event) {
+    if (event.detail.visible) {
+      this.showAnimatedMessage = false;
+    } else {
+      this.showAnimatedMessage = true;
+    }
+  }
+
   toggleMenuChat() {
     this.menu.toggle('chat');
   }
@@ -99,7 +199,18 @@ export class VideoPage implements OnInit, OnDestroy {
       this.connect();
     }
   }
-
+  animateMessage(message: Message) {
+    if (this.showAnimatedMessage) {
+      var style = this.animationsStyle[
+        Math.floor(Math.random() * this.animationsStyle.length)
+      ];
+      this.animationsListMessage.push({
+        style: style,
+        user: message.user.username,
+        message: message.text,
+      });
+    }
+  }
   ngOnDestroy() {
     this.roomService.disconnect();
   }

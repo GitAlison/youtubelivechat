@@ -1,4 +1,4 @@
-<ion-header >
+<ion-header>
   <ion-toolbar mode="md">
     <ion-buttons slot="start">
       <ion-menu-button color="dark"></ion-menu-button>
@@ -17,9 +17,10 @@
 </ion-header>
 
 
-<ion-split-pane contentId="chat">
+<ion-split-pane (ionSplitPaneVisible)="slipePane($event)" contentId="chat">
   <!--  our side menu  -->
-  <ion-menu menuId="chat" side="end" type="overlay" contentId="chat">
+  <ion-menu (ionDidClose)="chatClose()" (ionDidOpen)="chatOpen()" menuId="chat" side="end" type="overlay"
+    contentId="chat">
     <ion-header>
       <ion-toolbar color="light">
         <ion-title style="text-align: right;"> {{users}} online </ion-title>
@@ -27,7 +28,9 @@
     </ion-header>
 
     <ion-content>
+
       <app-chat-messages [video]="videoId"></app-chat-messages>
+
     </ion-content>
 
     <ion-footer>
@@ -64,12 +67,29 @@
     <div class="video">
       <app-video [videoId]="videoId" (statusVideo)="fromVideo($event)"></app-video>
     </div>
+    <div [@animation]="animationsListMessage.length">
+      <div class="message" *ngFor="let item of animationsListMessage">
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <img src="../../../assets/avatar.png" alt="Avatar"> </ion-avatar>
+          <ion-label class="ion-text-wrap">
+            <ion-text [color]="item?.style">
+              <b>{{item?.user}}</b> <br>
+            </ion-text>
+            <ion-text [color]="item?.style">
+              {{item.message}}
+            </ion-text>
+          </ion-label>
+        </ion-item>
+      </div>
+    </div>
+
+
     <ion-toolbar color="light">
       <ion-buttons slot="start">
         <ion-back-button defaultHref="home"></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-back-button></ion-back-button>
         <ion-button (click)="toggleMenuChat()">
           <ion-icon slot="icon-only" name="chatbox-ellipses-outline"></ion-icon>
         </ion-button>
